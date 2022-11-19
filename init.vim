@@ -21,11 +21,11 @@ Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-
+Plug 'https://github.com/mhinz/vim-startify'
 set encoding=UTF-8
 
 call plug#end()
-
+let g:webdevicons_enable_startify = 1
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -77,3 +77,7 @@ inoremap " ""<left>
 inoremap "" ""
 inoremap ' ''<left>
 inoremap '' ''
+
+nnoremap <tab> >>
+nnoremap <s-tab> <<
+
