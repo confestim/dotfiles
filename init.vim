@@ -1,0 +1,1 @@
+/home/apri/.config/nvim/init.vim

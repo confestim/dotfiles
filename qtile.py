@@ -1,0 +1,1 @@
+/home/apri/.config/qtile/config.py
