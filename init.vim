@@ -21,7 +21,7 @@ Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-Plug 'https://github.com/mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 set encoding=UTF-8
 
 call plug#end()
@@ -81,3 +81,16 @@ inoremap '' ''
 nnoremap <tab> >>
 nnoremap <s-tab> <<
 
+
+let s:startify_ascii_header = [
+ \ '                                        ▟▙            ',
+ \ '                                        ▝▘            ',
+ \ '██▃▅▇█▆▖  ▗▟████▙▖   ▄████▄   ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖',
+ \ '██▛▔ ▝██  ██▄▄▄▄██  ██▛▔▔▜██  ▝██  ██▘  ██  ██▛▜██▛▜██',
+ \ '██    ██  ██▀▀▀▀▀▘  ██▖  ▗██   ▜█▙▟█▛   ██  ██  ██  ██',
+ \ '██    ██  ▜█▙▄▄▄▟▊  ▀██▙▟██▀   ▝████▘   ██  ██  ██  ██',
+ \ '▀▀    ▀▀   ▝▀▀▀▀▀     ▀▀▀▀       ▀▀     ▀▀  ▀▀  ▀▀  ▀▀',
+ \ '',
+ \]
+let g:startify_custom_header = map(s:startify_ascii_header +
+        \ startify#fortune#quote(), '"   ".v:val')

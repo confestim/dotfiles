@@ -33,3 +33,6 @@ alias less="cless"
 alias cat="ccat"
 alias wormhole="python -m wormhole"
 alias monitor="xrandr --output HDMI1 --mode 1920x1080 --left-of eDP1 --rate 144"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=/home/apri/.local/bin:$PATH

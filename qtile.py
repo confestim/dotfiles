@@ -104,7 +104,7 @@ groups.append(ScratchPad("scratchpad", [
     DropDown("term", terminal, width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
     DropDown("authy", "authy", width=0.4, height=0.5, x=0.4, y=0.2, opacity=1),
     DropDown("alsa", "terminology -e alsamixer", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
-    DropDown("quick", f"terminology -e vim ~/Documents/Notes/{datetime.datetime.now().strftime('%d%m%y%H')}.md",width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
+    DropDown("quick", f"terminology -e nvim ~/Documents/Notes/{datetime.datetime.now().strftime('%d%m%y%H')}.md",width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
     DropDown("vifm", "terminology -e vifm", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
     DropDown("nautilus", "nautilus", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
     DropDown("calcurse", "terminology -e calcurse", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
