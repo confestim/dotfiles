@@ -22,7 +22,11 @@ Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'mhinz/vim-startify'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 set encoding=UTF-8
+
 
 call plug#end()
 let g:webdevicons_enable_startify = 1
@@ -34,7 +38,7 @@ nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
-:colorscheme gruvbox
+:colorscheme abstract
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
@@ -80,6 +84,9 @@ inoremap '' ''
 
 nnoremap <tab> >>
 nnoremap <s-tab> <<
+nnoremap <C-Left>  :tabnext
+nnoremap <C-Right> :tabprevious
+
 
 
 let s:startify_ascii_header = [
