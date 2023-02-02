@@ -30,6 +30,7 @@ keys = [
     Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "t", lazy.window.toggle_floating(), desc='Toggle floating'),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -45,9 +46,8 @@ keys = [
 
 
     Key([mod], "f", lazy.spawn("firefox"), desc="Launch firefox"),
-    Key([mod], "n", lazy.spawn("nautilus"), desc="Launch visual file explorer"),
     Key([mod], "e", lazy.spawn("codium"), desc="Launch VSCodium"),
-    Key([mod], "m", lazy.spawn("claws-mail"), desc="Launch Mail Client"),
+    Key([mod], "m", lazy.spawn("mailspring"), desc="Launch Mail Client"),
     Key([mod], "d", lazy.spawn("discord"), desc="Launch Discord  "),
     Key([mod], "q", lazy.spawn("joplin-desktop"), desc="Joplin"),
     Key([mod], "t", lazy.spawn("authy"), desc="Authy"),
@@ -71,7 +71,7 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn("fluent-reader"), desc="Rss reader"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -109,6 +109,7 @@ groups.append(ScratchPad("scratchpad", [
     DropDown("nautilus", "nautilus", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
     DropDown("calcurse", "terminology -e calcurse", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
     DropDown("lxrandr", "lxrandr", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
+    DropDown("qalculate", "qalculate-qt", width=0.4, height=0.5, x=0.3, y=0.3, opacity=1),
 
 ]))
 keys.extend([
@@ -118,6 +119,7 @@ keys.extend([
     Key(["control"],"4", lazy.group["scratchpad"].dropdown_toggle("quick")),
     Key(["control"],"5", lazy.group["scratchpad"].dropdown_toggle("vifm")),
     Key(["control"],"6", lazy.group["scratchpad"].dropdown_toggle("nautilus")),
+    Key(["control"],"7", lazy.group["scratchpad"].dropdown_toggle("qalculate")),
     Key([],"F2", lazy.group["scratchpad"].dropdown_toggle("calcurse")),
     Key([],"F3", lazy.group["scratchpad"].dropdown_toggle("lxrandr")),
 
@@ -195,7 +197,7 @@ screens = [
             ],
             32,
             border_width=[1, 2, 1, 2],  # Draw top and bottom borders
-            border_color=["5C2727", "000000", "5C2727", "000000"]  # Borders are magenta
+            border_color=["#bd93f9", "#bd93f9", "#bd93f9", "#bd93f9"]  # Borders are magenta
         ),
     ),
 ]

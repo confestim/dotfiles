@@ -1,8 +1,13 @@
-pfetch
-echo "S5230837"
-python /srv/todo.py
-python /srv/reminder/reminder.py
+# pfetch
+cat /srv/apri.cat
+echo "Stop overflowing memory, or you will go into kernel panic."
 echo "🔋: $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "[[:digit:]]\{2\}"% | head -n 1  | awk '{print $2 "\t"}')"
+echo "------------------------"
+echo "S5230837"
+
+python /srv/todo.py
+echo "------------------------"
+# python /srv/reminder/reminder.py
 echo " " 
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -33,6 +38,12 @@ alias less="cless"
 alias cat="ccat"
 alias wormhole="python -m wormhole"
 alias monitor="xrandr --output HDMI1 --mode 1920x1080 --left-of eDP1 --rate 144"
+alias overleaf="silo -a overleaf"
+alias rss="fluent-reader"
+alias pgpsend="nvim /srv/temp.txt && gpg -s --clear-sign --local-user "Boyan" /srv/temp.txt && xclip -selection c < /srv/temp.txt.asc && gpg --verify /srv/temp.txt.asc && rm /srv/temp.*"
 
+# Fuzzy search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Path
 export PATH=/home/apri/.local/bin:$PATH
+
