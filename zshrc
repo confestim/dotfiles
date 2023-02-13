@@ -1,6 +1,5 @@
 # pfetch
 cat /srv/apri.cat
-echo "Stop overflowing memory, or you will go into kernel panic."
 echo "🔋: $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "[[:digit:]]\{2\}"% | head -n 1  | awk '{print $2 "\t"}')"
 echo "------------------------"
 echo "S5230837"
