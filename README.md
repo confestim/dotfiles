@@ -8,4 +8,4 @@ My config for neovim.
 My config for zshell.
 
 ### qtile.py
-My config for the qtile WM.
+My config for the qtile WM. Rename Qtile_Assets to Assets and put it in the qtile config folder. Bar stolen from [this repo](https://github.com/Darkkal44/CozyTile/).
