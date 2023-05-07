@@ -10,6 +10,12 @@
 
 call plug#begin("/home/apri/.config/nvim/plugged")
 
+
+Plug 'junegunn/vim-emoji' " Emojis :C
+Plug 'nvim-tree/nvim-web-devicons' " Yet another icon pack
+Plug 'romgrk/barbar.nvim' " Tab bar
+Plug 'ellisonleao/carbon-now.nvim' " Carbon
+Plug 'https://github.com/sbdchd/neoformat' " Formatting code
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -26,10 +32,17 @@ Plug 'mhinz/vim-startify' " Splash screen when started
 Plug 'nvim-lua/plenary.nvim' " Needed for telescope
 Plug 'nvim-telescope/telescope.nvim' " Telescope, searches for stuff
 Plug 'https://github.com/conornewton/vim-latex-preview' " LaTeX preview plugin
-Plug 'iamcco/markdown-preview.nvim' " MarkDown preview plugin
+Plug 'davidgranstrom/nvim-markdown-preview' " MarkDown preview plugin
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 set encoding=UTF-8
+
+" MarkdownPreview config
+let g:nvim_markdown_preview_theme = 'solarized-dark'
+
+" Emoji autocomplete
+set completefunc=emoji#complete
+
 
 " Limelight config
 let g:limelight_conceal_ctermfg = 'gray'
@@ -40,6 +53,9 @@ filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
+" Formatting config
+
+let g:neoformat_basic_format_retab = 1  
 
 call plug#end()
 let g:webdevicons_enable_startify = 1
@@ -71,6 +87,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
+
 " airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -96,7 +113,7 @@ inoremap ' ''<left>
 inoremap '' ''
 
 nnoremap <tab> >>
-nnoremap <s-tab> <<
+nnoremap <S-tab> <<
 nnoremap <A-Left>  :tabNext
 nnoremap <A-Right> :tabprevious
 
@@ -199,6 +216,58 @@ let g:mkdp_filetypes = ['markdown']
 " set default theme (dark or light)
 " By default the theme is define according to the preferences of the system
 let g:mkdp_theme = 'dark'
+
+"   Tabbar
+" Move to previous/next
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
+
+" Re-order to previous/next
+nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
+
+" Goto buffer in position...
+nnoremap <silent>    <A-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent>    <A-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent>    <A-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent>    <A-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent>    <A-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent>    <A-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent>    <A-7> <Cmd>BufferGoto 7<CR>
+nnoremap <silent>    <A-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <A-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent>    <A-0> <Cmd>BufferLast<CR>
+
+" Pin/unpin buffer
+nnoremap <silent>    <A-p> <Cmd>BufferPin<CR>
+
+" Close buffer
+nnoremap <silent>    <A-q> <Cmd>BufferClose<CR>
+
+" Wipeout buffer
+"                          :BufferWipeout
+" Close commands
+"                          :BufferCloseAllButCurrent
+"                          :BufferCloseAllButVisible
+"                          :BufferCloseAllButPinned
+"                          :BufferCloseAllButCurrentOrPinned
+"                          :BufferCloseBuffersLeft
+"                          :BufferCloseBuffersRight
+
+" Magic buffer-picking mode
+nnoremap <silent> <C-p>    <Cmd>BufferPick<CR>
+nnoremap <silent> <C-p>    <Cmd>BufferPickDelete<CR>
+
+" Sort automatically by...
+nnoremap <silent> <Space>bb <Cmd>BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
+
+" Other:
+" :BarbarEnable - enables barbar (enabled by default)
+" :BarbarDisable - very bad command, should never be used
+
 
 let s:startify_ascii_header = [
  \ '                                        ▟▙            ',

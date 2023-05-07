@@ -36,13 +36,17 @@ alias prepefi="sudo mount /dev/nvme0n1p1 /boot/ && echo 'Mounted!'"
 alias less="cless"
 alias cat="ccat"
 alias wormhole="python -m wormhole"
-alias monitor="xrandr --output HDMI1 --mode 1920x1080 --left-of eDP1 --rate 144"
+alias monitor="xrandr --output HDMI1 --rate 144 --mode 1920x1080 --left-of eDP1"
 alias overleaf="silo -a overleaf"
 alias rss="fluent-reader"
 alias pgpsend="nvim /srv/temp.txt && gpg -s --clear-sign --local-user "Boyan" /srv/temp.txt && xclip -selection c < /srv/temp.txt.asc && gpg --verify /srv/temp.txt.asc && rm /srv/temp.*"
-
+alias nls="tyls"
+alias unstage="git reset --soft HEAD~1 && echo -e 'Unstaged last local commit'"
 # Fuzzy search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Path
 export PATH=/home/apri/.local/bin:$PATH
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
 
