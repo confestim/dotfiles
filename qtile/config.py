@@ -1,0 +1,1 @@
+/home/alent/.config/qtile/config.py
