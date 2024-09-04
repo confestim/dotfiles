@@ -1,1 +1,54 @@
-/home/alent/.zshrc
+
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="~/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+plugins=(git zsh-syntax-highlighting z calc dirhistory fzf-zsh-plugin)
+
+source $ZSH/oh-my-zsh.sh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Aliases
+export EDITOR="nvim"
+alias batt="battery | grep percentage"
+alias wormhole="python -m wormhole"
+alias monitor="xrandr --output HDMI1 --primary --rate 120 --mode 1920x1080 --left-of eDP1"
+alias icat="kitty +kitten icat"
+alias unicode="kitty +kitten unicode_input --tab name"
+alias rug="sudo openconnect --protocol=gp safenet.vpn.rug.nl"
+alias unstage="git reset --soft HEAD~1 && echo -e 'Unstaged last local commit'"
+alias wifi="nmcli device wifi show-password"
+alias nosleep="sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target"alias backtosleep="sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target"
+
+# Fuzzy search
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Path
+export PATH=~/.local/bin:$PATH
+export PATH=$PATH:/usr/local/bin
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+export PATH="$PATH:/home/alent/.dotnet/tools"
+
+# Changing "ls" to "exa"
+alias ls='exa --icons --color=always --group-directories-first'
+alias ll='exa -alF --icons --color=always --group-directories-first'
+alias la='exa -a --icons --color=always --group-directories-first'
+alias l='exa -F --icons --color=always --group-directories-first'
+alias l.='exa -a | egrep "^\."'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# /srv/faces
+cat /srv/summus.cat | lolcat
+/srv/terminal_header.sh
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/home/alent/.cache/lm-studio/bin"
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
