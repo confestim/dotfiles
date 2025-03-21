@@ -19,6 +19,7 @@ My config for the kitty terminal emulator. I use the default dracula theme.
 
 ### Gnome extensions
 Output of `gnome-extensions list --enabled`:
+
 ```
 serverstatus@footeware.ca
 do-not-disturb-while-screen-sharing-or-recording@marcinjahn.com
