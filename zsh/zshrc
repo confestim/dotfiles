@@ -25,6 +25,7 @@ alias rug="sudo openconnect --protocol=gp safenet.vpn.rug.nl"
 alias unstage="git reset --soft HEAD~1 && echo -e 'Unstaged last local commit'"
 alias wifi="nmcli device wifi show-password"
 alias nosleep="sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target"alias backtosleep="sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target"
+alias readme="git add README.md && git commit -m 'Update README.md' && git push"
 
 # Fuzzy search
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
