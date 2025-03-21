@@ -17,4 +17,25 @@ My config for the qtile WM (mostly non-riced arco linux theme). I use sxhkd for 
 ### kitty.conf
 My config for the kitty terminal emulator. I use the default dracula theme.
 
-
+### Gnome extensions
+Output of `gnome-extensions list --enabled`:
+```
+serverstatus@footeware.ca
+do-not-disturb-while-screen-sharing-or-recording@marcinjahn.com
+privacy-indicators-accent-color@sopht.li
+hide-keyboard-layout@sitnik.ru
+todoit@wassimbj.github.io
+appindicatorsupport@rgcjonas.gmail.com
+crypto@alipirpiran.github
+CustomizeClockOnLockScreen@pratap.fastmail.fm
+tilingshell@ferrarodomenico.com
+caffeine@patapon.info
+azwallpaper@azwallpaper.gitlab.com
+auto-move-windows@gnome-shell-extensions.gcampax.github.com
+drive-menu@gnome-shell-extensions.gcampax.github.com
+screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+status-icons@gnome-shell-extensions.gcampax.github.com
+system-monitor@gnome-shell-extensions.gcampax.github.com
+user-theme@gnome-shell-extensions.gcampax.github.com
+gsconnect@andyholmes.github.io
+```
