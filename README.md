@@ -12,7 +12,7 @@ My config for the qtile WM (mostly non-riced arco linux theme). I use sxhkd for 
 
 > [!NOTE]
 > ~~I don't use this WM anymore, I use hyprland (with a slightly riced [ML4W](https://www.ml4w.com/) theme) and Gnome with [Tiling Shell](https://extensions.gnome.org/extension/7065/tiling-shell/)~~
-> Sike! I now use Niri on my laptop and hyprland (and sometimes GNOME) on my PC. Same waybar.
+> Sike! I now use Niri on my laptop and hyprland with [HyDE](https://github.com/HyDE-Project/HyDE), sometimes GNOME on my PC. I swear I'll make my own hyprland dots lmfao - stuff breaks too easily.
 
 
 ### kitty.conf
