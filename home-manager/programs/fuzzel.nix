@@ -1,14 +1,12 @@
 { config, pkgs, ... }:
-
 {
   programs.fuzzel = {
     enable = true;
-
     settings = {
       main = {
-        terminal = "${pkgs.alacritty}/bin/alacritty";
+        terminal = "kitty";
         layer = "overlay";
-        font = "Agave Nerd Font:size=13";
+        font = "Agave Nerd Font:size=18";
         dpi-aware = "yes";
         icon-theme = "Papirus-Dark";
         width = 40;
@@ -16,7 +14,6 @@
         vertical-pad = 10;
         inner-pad = 10;
       };
-
       colors = {
         # Dracula theme colors
         background = "282a36ff";
@@ -27,11 +24,14 @@
         selection-match = "8be9fdff";
         border = "bd93f9ff";
       };
-
       border = {
         width = 2;
         radius = 8;
       };
     };
   };
+
+  home.packages = with pkgs; [
+    libqalculate
+  ];
 }

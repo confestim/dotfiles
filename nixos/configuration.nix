@@ -157,10 +157,10 @@ in
   programs.firefox.enable = true;
   programs.zsh = {
     enable = true;
-shellAliases = {
-  nos = "sudo nixos-rebuild switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
-  hms = "home-manager switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'HM: auto update' && git push)";
-};
+    shellAliases = {
+      nos = "sudo nixos-rebuild switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
+      hms = "home-manager switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'HM: auto update' && git push)";
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -190,21 +190,21 @@ shellAliases = {
 
   programs.waybar.enable = true;
   programs.niri.enable = true;
-programs.git = {
-  enable = true;
-  config = {
-    user = {
-      email = "boyan@confest.im";
-      name = "Boyan K.";
-    };
-    init = {
-      defaultBranch = "main";
-    };
-    core = {
-      editor = "nvim";
+  programs.git = {
+    enable = true;
+    config = {
+      user = {
+        email = "boyan@confest.im";
+        name = "Boyan K.";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        editor = "nvim";
+      };
     };
   };
-};
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
