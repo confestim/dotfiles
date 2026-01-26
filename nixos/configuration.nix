@@ -228,7 +228,10 @@ programs.git = {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
+#dirty nasty fix
+programs.ssh.extraConfig = ''
+  Include /home/boyan/.ssh/config
+'';
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

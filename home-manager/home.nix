@@ -118,20 +118,6 @@
     gtk-application-prefer-dark-theme=1
   '';
 
-  programs.git = {
-    enable = true;
-    settings = {
-      user.email = "boyan@confest.im";
-      user.name = "Boyan K.";
-      init = {
-        defaultBranch = "main";
-      };
-      core = {
-        editor = "nvim";
-      };
-    };
-  };
-
   home.sessionVariables = {
     EDITOR = "vim";
     GSK_RENDERER = "gl";
