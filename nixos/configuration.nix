@@ -157,11 +157,10 @@ in
   programs.firefox.enable = true;
   programs.zsh = {
     enable = true;
-
-    shellAliases = {
-      nos = "sudo nixos-rebuild switch && (cd ~/buffer/dotfiles && sudo git add -A && sudo git diff-index --quiet HEAD || sudo git commit -m 'NixOS: $(date)' && sudo git push)";
-      hms = "home-manager switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'home-manager: $(date)' && git push)";
-    };
+shellAliases = {
+  nos = "sudo nixos-rebuild switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m \"NixOS: \\$(date)\" && git push)";
+  hms = "home-manager switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m \"home-manager: \\$(date)\" && git push)";
+};
   };
 
   nixpkgs.config.allowUnfree = true;
