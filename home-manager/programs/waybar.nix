@@ -9,13 +9,13 @@
         position = "top";
         height = 30;
         spacing = 0;
-        
+
         modules-left = [
           "niri/workspaces"
         ];
-        
+
         modules-center = [ "clock" ];
-        
+
         modules-right = [
           "wireplumber"
           "battery"
@@ -25,11 +25,11 @@
           "bluetooth"
           "tray"
         ];
-        
+
         clock = {
           format = "{:%a %d.%m.%Y | %H:%M}";
         };
-        
+
         wireplumber = {
           format = "󰕾 {volume}%";
           format-muted = "󰖁  Muted";
@@ -37,27 +37,33 @@
           scroll-step = 5;
           on-click = "pavucontrol";
         };
-        
+
         memory = {
           interval = 30;
           format = "  {used:0.1f}G";
         };
-        
+
         temperature = {
           format = " | {temperatureC}°C |";
         };
-        
+
         network = {
           format = "";
           format-ethernet = "󰈀";
           format-wifi = "{icon}";
           format-disconnected = "󰈂";
-          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
           tooltip-format-disconnected = "Disconnected";
         };
-        
+
         bluetooth = {
           format = "󰂯";
           format-disabled = "󰂲";
@@ -66,12 +72,12 @@
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
         };
-        
+
         tray = {
           icon-size = 18;
           spacing = 10;
         };
-        
+
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
@@ -79,21 +85,37 @@
             deactivated = "󰾪";
           };
         };
-        
+
         battery = {
           format = "{icon}  {capacity}%";
           format-charging = "󰂄  {capacity}%";
           format-plugged = "󰂄  {capacity}%";
-          format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = [
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
         };
-        
+
         backlight = {
           format = "{icon}  {percent}%";
-          format-icons = [ "󰃞" "󰃟" "󰃠" ];
+          format-icons = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
         };
       };
     };
-    
+
     style = ''
       * {
         font-family: "Agave Nerd Font", "Symbols Nerd Font", sans-serif;
@@ -106,7 +128,7 @@
         background-color: #282a36;
         color: #f8f8f2;
       }
-      
+
       #workspaces button,
       #clock,
       #battery,
@@ -122,7 +144,7 @@
         color: #f8f8f2;
         background: transparent;
       }
-      
+
       #workspaces button.active {
         color: #f8f8f2;
         text-decoration: underline;

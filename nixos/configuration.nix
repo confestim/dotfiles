@@ -2,20 +2,25 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  hostName="eon";
+  hostName = "eon";
 in
 {
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./hosts/${hostName}.nix
-    ];
-  
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./hosts/${hostName}.nix
+  ];
+
   hardware.rtl-sdr.enable = true;
-  hardware.graphics.enable=true;
+  hardware.graphics.enable = true;
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -27,10 +32,10 @@ in
     enable = true;
     theme = "tela";
     footer = true;
-    customResolution = "1600x900";  # Optional: Set a custom resolution
+    customResolution = "1600x900"; # Optional: Set a custom resolution
   };
   virtualisation.docker.enable = true;
-  networking.hostName = hostName; 
+  networking.hostName = hostName;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -61,22 +66,22 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.displayManager.startx.enable = true;
-  
+
   # portals
   xdg.portal = {
-	  enable = true;
-	  wlr.enable = true;
-	  config = {
-	    common = {
-	      default = [ "gtk" ];
-	    };
-	    niri = {
-	      default = lib.mkForce [ "wlr"];
-	      "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-	      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-	    };
-	  };
-	};
+    enable = true;
+    wlr.enable = true;
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+      niri = {
+        default = lib.mkForce [ "wlr" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+      };
+    };
+  };
 
   # udev
   services.udev.packages = [ pkgs.stlink ];
@@ -107,7 +112,7 @@ in
 
   # Configure keymap in X11
   services.xserver.xkb = {
-   layout = "us";
+    layout = "us";
     variant = "altgr-intl";
   };
 
@@ -136,15 +141,34 @@ in
   users.users.boyan = {
     isNormalUser = true;
     description = "Boyan";
-    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" "plugdev" "video" "audio" ];
-    shell=pkgs.zsh;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "dialout"
+      "plugdev"
+      "video"
+      "audio"
+    ];
+    shell = pkgs.zsh;
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-  programs.zsh.enable=true;
+  programs.zsh = {
+    enable = true;
+
+    shellAliases = {
+      nos = "sudo nixos-rebuild switch && (cd ~/buffer/dotfiles && sudo git add -A && sudo git diff-index --quiet HEAD || sudo git commit -m 'NixOS: $(date)' && sudo git push)";
+      hms = "home-manager switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'home-manager: $(date)' && git push)";
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   environment.systemPackages = with pkgs; [
     wget
@@ -168,18 +192,30 @@ in
   programs.waybar.enable = true;
   programs.niri.enable = true;
 
+  programs.git = {
+    enable = true;
+    settings = {
+      user.email = "boyan@confest.im";
+      user.name = "Boyan K.";
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        editor = "nvim";
+      };
+    };
+  };
   fonts.packages = with pkgs; [
-	  noto-fonts
-	  noto-fonts-cjk-sans
-	  noto-fonts-color-emoji
-	  liberation_ttf
-	  fira-code
-	  fira-code-symbols
-	  mplus-outline-fonts.githubRelease
-	  dina-font
-	  proggyfonts
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
   ];
-
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {

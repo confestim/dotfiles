@@ -10,20 +10,26 @@
     ./programs/waybar.nix
     ./programs/swaylock.nix
   ];
-  
+
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = [ "wlr" "gtk" ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = [
+      "wlr"
+      "gtk"
+    ];
   };
-  
+
   home.username = "boyan";
   home.homeDirectory = "/home/boyan";
-  
+
   fonts.fontconfig.enable = true;
-  
+
   home.stateVersion = "25.11";
-  
+
   home.packages = with pkgs; [
     nerd-fonts.agave
     nerd-fonts.symbols-only
@@ -62,9 +68,9 @@
     texlive.combined.scheme-full
     libnotify
   ];
-  
+
   nixpkgs.config.allowUnfree = true;
-  
+
   # Notification daemon
   services.mako = {
     enable = true;
@@ -83,7 +89,7 @@
       border-color=#ff5555
     '';
   };
-  
+
   gtk = {
     enable = true;
     theme = {
@@ -101,18 +107,18 @@
       gtk-application-prefer-dark-theme = true;
     };
   };
-  
+
   qt = {
     enable = true;
     platformTheme.name = "gtk";
     style.name = "adwaita-dark";
   };
-  
+
   xdg.configFile."gtk-3.0/settings.ini".text = ''
     [Settings]
     gtk-application-prefer-dark-theme=1
   '';
-  
+
   programs.git = {
     enable = true;
     settings = {
@@ -126,12 +132,12 @@
       };
     };
   };
-  
+
   home.sessionVariables = {
     EDITOR = "vim";
     GSK_RENDERER = "gl";
   };
-  
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -146,9 +152,9 @@
     };
 
   };
-  
+
   programs.home-manager.enable = true;
-  
+
   # wakatime
   home.file.".wakatime.cfg".text = ''
     [settings]

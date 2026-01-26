@@ -6,11 +6,11 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    
+
     plugins = with pkgs.vimPlugins; [
       # Theme
       dracula-nvim
-      
+
       # UI
       nerdtree
       vim-devicons
@@ -19,40 +19,40 @@
       barbar-nvim
       tagbar
       vim-startify
-      
+
       # Navigation & Search
       telescope-nvim
       plenary-nvim
-      
+
       # Git
       vim-fugitive
-      
+
       # Utilities
       vim-surround
       vim-commentary
       vim-multiple-cursors
       neoformat
       nvim-jqx
-      
+
       # Copilot
       copilot-vim
-      
+
       # CoC (Completion)
       coc-nvim
-      
+
       # Language Support
       vim-css-color
       pgsql-vim
       vimtex
-      
+
       # Focus mode
       limelight-vim
-      
+
       # Misc
       vim-emoji
       awesome-vim-colorschemes
     ];
-    
+
     extraConfig = ''
       " Basic settings
       set number
@@ -66,26 +66,26 @@
       set mouse=a
       set encoding=UTF-8
       set completeopt-=preview
-      
+
       " Colorscheme
       colorscheme dracula
-      
+
       " Emoji autocomplete
       set completefunc=emoji#complete
-      
+
       " NERDTree
       let g:NERDTreeDirArrowExpandable="+"
       let g:NERDTreeDirArrowCollapsible="~"
       nnoremap <C-n> :NERDTree<CR>
       nnoremap <C-t> :NERDTreeToggle<CR>
-      
+
       " CoC
       nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
       inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
-      
+
       " Tagbar
       nmap <F8> :TagbarToggle<CR>
-      
+
       " Auto pairs
       inoremap { {}<left>
       inoremap {{ {
@@ -100,13 +100,13 @@
       inoremap "" ""
       inoremap ' <Char-39><Char-39><left>
       inoremap <Char-39><Char-39> <Char-39><Char-39>
-      
+
       " Tab navigation
       nnoremap <Tab> >>
       nnoremap <S-Tab> 
       nnoremap <A-Right> :tabNext<CR>
       nnoremap <A-Left> :tabprevious<CR>
-      
+
       " Airline
       let g:airline_powerline_fonts = 1
       if !exists('g:airline_symbols')
@@ -119,19 +119,19 @@
       let g:airline_symbols.branch = '�'
       let g:airline_symbols.readonly = '�'
       let g:airline_symbols.linenr = '�'
-      
+
       " Limelight
       let g:limelight_conceal_ctermfg = 'gray'
       let g:limelight_conceal_ctermfg = 240
-      
+
       " LaTeX
       filetype plugin indent on
       set grepprg=grep\ -nH\ $*
       let g:tex_flavor = "latex"
-      
+
       " Neoformat
       let g:neoformat_basic_format_retab = 1
-      
+
       " Markdown Preview
       let g:nvim_markdown_preview_theme = 'solarized-dark'
       let g:mkdp_auto_start = 0
@@ -162,7 +162,7 @@
       let g:mkdp_port = ""
       let g:mkdp_filetypes = ['markdown']
       let g:mkdp_theme = 'dark'
-      
+
       " Barbar (tab bar)
       nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
       nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
@@ -185,7 +185,7 @@
       nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>
       nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
       nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
-      
+
       " Startify
       let g:webdevicons_enable_startify = 1
       let s:startify_ascii_header = [
@@ -202,7 +202,7 @@
               \ startify#fortune#quote(), '"   ".v:val')
     '';
   };
-  
+
   # CoC extensions
   home.file.".config/nvim/coc-settings.json".text = ''
     {

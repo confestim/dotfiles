@@ -6,7 +6,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    
+
     zplug = {
       enable = true;
       plugins = [
@@ -16,7 +16,7 @@
         }
       ];
     };
-    
+
     oh-my-zsh = {
       enable = true;
       plugins = [
@@ -26,7 +26,7 @@
         "z"
       ];
     };
-    
+
     shellAliases = {
       ls = "eza";
       ll = "eza -la";
@@ -34,7 +34,7 @@
       lt = "eza --tree";
       update = "home-manager switch";
     };
-    
+
     initContent = ''
       # fzf integration
       if [ -n "''${commands[fzf-share]}" ]; then
