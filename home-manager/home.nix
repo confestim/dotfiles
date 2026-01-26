@@ -25,7 +25,6 @@
 
   home.username = "boyan";
   home.homeDirectory = "/home/boyan";
-
   fonts.fontconfig.enable = true;
 
   home.stateVersion = "25.11";

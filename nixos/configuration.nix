@@ -191,20 +191,21 @@ in
 
   programs.waybar.enable = true;
   programs.niri.enable = true;
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user.email = "boyan@confest.im";
-      user.name = "Boyan K.";
-      init = {
-        defaultBranch = "main";
-      };
-      core = {
-        editor = "nvim";
-      };
+programs.git = {
+  enable = true;
+  config = {
+    user = {
+      email = "boyan@confest.im";
+      name = "Boyan K.";
+    };
+    init = {
+      defaultBranch = "main";
+    };
+    core = {
+      editor = "nvim";
     };
   };
+};
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
