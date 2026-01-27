@@ -100,25 +100,33 @@
       inoremap "" ""
       inoremap ' <Char-39><Char-39><left>
       inoremap <Char-39><Char-39> <Char-39><Char-39>
+      " ========== CLIPBOARD FIX ==========
+      " Use system clipboard for all operations
+      set clipboard=unnamedplus
+      
+      " Make sure we can use system clipboard
+      if has('unnamedplus')
+        set clipboard=unnamedplus
+      else
+        set clipboard=unnamed
+      endif
 
       " Tab navigation
       nnoremap <Tab> >>
       nnoremap <S-Tab> 
-      nnoremap <A-Right> :tabNext<CR>
-      nnoremap <A-Left> :tabprevious<CR>
 
       " Airline
       let g:airline_powerline_fonts = 1
       if !exists('g:airline_symbols')
           let g:airline_symbols = {}
       endif
-      let g:airline_left_sep = '�'
-      let g:airline_left_alt_sep = '�'
-      let g:airline_right_sep = '�'
-      let g:airline_right_alt_sep = '�'
-      let g:airline_symbols.branch = '�'
-      let g:airline_symbols.readonly = '�'
-      let g:airline_symbols.linenr = '�'
+      let g:airline_left_sep = '>'
+      let g:airline_left_alt_sep = '|'
+      let g:airline_right_sep = '<'
+      let g:airline_right_alt_sep = '|'
+      let g:airline_symbols.branch = 'b'
+      let g:airline_symbols.readonly = 'x'
+      let g:airline_symbols.linenr = '#'
 
       " Limelight
       let g:limelight_conceal_ctermfg = 'gray'
@@ -164,8 +172,8 @@
       let g:mkdp_theme = 'dark'
 
       " Barbar (tab bar)
-      nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
-      nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
+      nnoremap <silent>    <A-Left> <Cmd>BufferPrevious<CR>
+      nnoremap <silent>    <A-Right> <Cmd>BufferNext<CR>
       nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
       nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
       nnoremap <silent>    <A-1> <Cmd>BufferGoto 1<CR>
