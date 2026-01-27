@@ -5,10 +5,11 @@
     ./programs/nvim.nix
     ./programs/kitty.nix
     ./programs/niri.nix
-    ./programs/fuzzel.nix
     ./programs/zsh.nix
     ./programs/waybar.nix
     ./programs/swaylock.nix
+    ./programs/rofi.nix
+    ./files.nix
   ];
 
   xdg.portal = {
@@ -33,7 +34,6 @@
     nerd-fonts.agave
     nerd-fonts.symbols-only
     obsidian
-    mpv
     obs-studio
     btop
     sdrpp
@@ -57,7 +57,6 @@
     fuzzel
     swaylock-effects
     swaybg
-    feh
     brightnessctl
     wireplumber
     nodejs
@@ -119,24 +118,22 @@
   '';
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
+    VISUAL = "codium";
     GSK_RENDERER = "gl";
   };
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "inode/directory" = "thunar.desktop";
-      "video/mp4" = "mpv.desktop";
-      "video/x-matroska" = "mpv.desktop";
-      "video/webm" = "mpv.desktop";
-      "video/mpeg" = "mpv.desktop";
-      "video/x-msvideo" = "mpv.desktop";
-      "video/quicktime" = "mpv.desktop";
-      "video/x-flv" = "mpv.desktop";
-    };
-
+  xdg.desktopEntries.nvim = {
+    name = "Neovim";
+    genericName = "Text Editor";
+    exec = "kitty -e nvim %F";
+    terminal = true;
+    mimeType = [
+      "text/plain"
+      "text/*"
+    ];
   };
+
 
   programs.home-manager.enable = true;
 

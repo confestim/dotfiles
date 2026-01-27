@@ -187,8 +187,15 @@ in
     usbutils
   ];
   programs.nix-ld.enable = true;
-
+  services.tumbler.enable = true;
   programs.waybar.enable = true;
+  # This is the dumbest shit ever
+  services.gvfs = {
+    enable = true;
+    package = pkgs.gvfs.override {
+      samba = null;
+    };
+  };
   programs.niri.enable = true;
   programs.git = {
     enable = true;

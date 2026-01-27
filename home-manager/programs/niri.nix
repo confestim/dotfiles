@@ -101,6 +101,17 @@
     screenshot-path null
 
     animations {
+        slowdown 1.0
+        
+        window-open {
+            duration-ms 150
+            curve "ease-out-expo"
+        }
+        
+        window-close {
+            duration-ms 150
+            curve "ease-out-quad"
+        }
     }
 
     window-rule {
@@ -130,7 +141,7 @@
         Mod+Shift+Slash { show-hotkey-overlay; }
 
         Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-        Mod+A hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+        Mod+A hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
         Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
         Mod+F hotkey-overlay-title="Open a Firefox" { spawn "firefox"; }
         Mod+M hotkey-overlay-title="Open a Thunderbird" { spawn "thunderbird"; }
