@@ -41,6 +41,8 @@
       "audio/aac" = "mpv.desktop";
 
       "application/pdf" = "firefox.desktop";
+      # markdown
+      "text/markdown" = "neovim.desktop";
       "text/*" = "neovim.desktop";
     };
   };
