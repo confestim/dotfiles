@@ -121,6 +121,7 @@
     EDITOR = "nvim";
     VISUAL = "codium";
     GSK_RENDERER = "gl";
+    NIXOS_XDG_OPEN_USE_PORTAL = "1";
   };
 
   xdg.desktopEntries.nvim = {

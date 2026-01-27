@@ -42,8 +42,8 @@
 
       "application/pdf" = "firefox.desktop";
       # markdown
-      "text/markdown" = "Neovim.desktop";
-      "text/*" = "Neovim.desktop";
+      "text/markdown" = "nvim.desktop";
+      "text/*" = "nvim.desktop";
     };
   };
   programs.mpv = {
