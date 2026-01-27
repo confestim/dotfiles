@@ -202,14 +202,24 @@
               \ startify#fortune#quote(), '"   ".v:val')
     '';
   };
-
   # CoC extensions
   home.file.".config/nvim/coc-settings.json".text = ''
     {
       "suggest.noselect": false,
       "suggest.enablePreselect": true,
-      "diagnostic.checkCurrentLine": true
+      "diagnostic.checkCurrentLine": true,
+      "languageserver": {
+        "ccls": {
+          "command": "ccls",
+          "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+          "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+          "initializationOptions": {
+            "cache": {
+              "directory": "/tmp/ccls"
+            }
+          }
+        }
+      }
     }
   '';
-
 }
