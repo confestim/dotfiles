@@ -129,10 +129,6 @@
     genericName = "Text Editor";
     exec = "kitty -e nvim %F";
     terminal = true;
-    mimeType = [
-      "text/plain"
-      "text/*"
-    ];
   };
 
 
