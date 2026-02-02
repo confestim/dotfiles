@@ -57,7 +57,6 @@
     }
 
     layout {
-        background-color "transparent"
         gaps 8
         center-focused-column "never"
 
