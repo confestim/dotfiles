@@ -34,6 +34,7 @@
     nerd-fonts.agave
     nerd-fonts.symbols-only
     obsidian
+    ffmpeg
     obs-studio
     btop
     sdrpp
