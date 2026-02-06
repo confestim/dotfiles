@@ -11,7 +11,7 @@
       "dracula-theme.theme-dracula"
       "bbenoist.nix"
       "jnoortheen.nix-ide"
-      "astral-sh.ty"
+      "detachhead.basedpyright"
       "donjayamanne.githistory"
       "haskell.haskell"
       "justusadam.language-haskell"
@@ -48,7 +48,6 @@
       "editor.renderWhitespace" = "all";
       "editor.minimap.enabled" = false;
       "editor.linkedEditing" = true;
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.rulers" = [
         {
           "column" = 80;
@@ -133,7 +132,7 @@
       "basedpyright.analysis.diagnosticMode"="openFilesOnly";
 
       "[python]" = {
-        "editor.defaultFormatter" = "astral-sh.ty";
+        "editor.defaultFormatter" = "detachhead.basedpyright";
       };
 
       # C/C++
