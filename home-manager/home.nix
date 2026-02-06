@@ -107,6 +107,12 @@
     };
   };
 
+  #obs
+  nixpkgs.config.packageOverrides = pkgs: {
+    obs-studio = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
+  };
   qt = {
     enable = true;
     platformTheme.name = "gtk";
