@@ -129,7 +129,6 @@
       # Python
       "python.pythonPath" = "/usr/bin/python";
       "python.analysis.typeCheckingMode" = "basic";
-      "python.languageServer" = "Default";
       "python.createEnvironment.trigger" = "off";
 
       "[python]" = {
