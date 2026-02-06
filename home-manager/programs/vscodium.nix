@@ -11,7 +11,7 @@
       "dracula-theme.theme-dracula"
       "bbenoist.nix"
       "jnoortheen.nix-ide"
-      "detachhead.basedpyright"
+      "astral-sh.ty"
       "donjayamanne.githistory"
       "haskell.haskell"
       "justusadam.language-haskell"
@@ -130,9 +130,10 @@
       "python.pythonPath" = "/usr/bin/python";
       "python.analysis.typeCheckingMode" = "basic";
       "python.createEnvironment.trigger" = "off";
+      "basedpyright.analysis.diagnosticMode"="openFilesOnly";
 
       "[python]" = {
-        "editor.defaultFormatter" = "ms-python.black-formatter";
+        "editor.defaultFormatter" = "astral-sh.ty";
       };
 
       # C/C++
