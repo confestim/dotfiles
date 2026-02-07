@@ -98,12 +98,12 @@
         slowdown 1.0
         
         window-open {
-            duration-ms 150
+            duration-ms 50
             curve "ease-out-expo"
         }
         
         window-close {
-            duration-ms 150
+            duration-ms 50
             curve "ease-out-quad"
         }
     }
@@ -129,6 +129,9 @@
 
     window-rule {
         clip-to-geometry true
+    }
+    hotkey-overlay {
+      skip-at-startup
     }
 
     binds {
