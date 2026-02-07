@@ -274,7 +274,7 @@
 
         Mod+Q { toggle-column-tabbed-display; }
 
-        Print { screenshot; }
+        Mod+S { screenshot; }
         Ctrl+Print { screenshot-screen; }
         Alt+Print { screenshot-window; }
 
