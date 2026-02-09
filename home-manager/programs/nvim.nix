@@ -19,7 +19,7 @@
       barbar-nvim
       tagbar
       vim-startify
-
+      vim-wakatime
       # Navigation & Search
       telescope-nvim
       plenary-nvim
