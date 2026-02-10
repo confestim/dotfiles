@@ -24,6 +24,8 @@
       "wallenwang.ccls-plus"
       "vibhanshugarg.vibhanshugarg-codenotes"
       "myriad-dreamin.tinymist"
+      "fill-labs.dependi"
+      "rust-lang.rust-analyzer"
     ];
 
     profiles.default.userSettings = {
