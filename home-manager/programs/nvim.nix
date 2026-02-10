@@ -252,7 +252,7 @@
         "--completion-style=detailed"
       ],
       "rust-analyzer.server.path": "rust-analyzer",
-      "rust-analyzer.checkOnSave.command": "clippy",
+      "rust-analyzer.check.command": "clippy",
       "rust-analyzer.inlayHints.typeHints.enable": true,
       "rust-analyzer.inlayHints.parameterHints.enable": true
     }

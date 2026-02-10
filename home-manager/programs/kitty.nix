@@ -5,7 +5,7 @@
     enable = true;
 
     font = {
-      name = "Agave Nerd Font Mono";
+      name = "Fira Code Symbols";
       size = 15;
     };
 
