@@ -242,6 +242,7 @@
       },
       "python.linting.enabled": true,
       "python.linting.pylintEnabled": true,
+      "inlayHint.enable": true,
       "pyright.inlayHints.variableTypes": true,
       "pyright.inlayHints.functionReturnTypes": true,
       "clangd.path": "clangd",
