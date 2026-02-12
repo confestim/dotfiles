@@ -57,7 +57,6 @@
     }
 
     layout {
-        background-color "transparent"
         gaps 8
         center-focused-column "never"
 
@@ -71,16 +70,11 @@
 
         focus-ring {
             width 4
-            active-color "#282a36"
-            inactive-color "#6272a4"
+            active-color "#6272a4"
         }
 
         border {
             off
-            width 4
-            active-color "#ffc87f"
-            inactive-color "#505050"
-            urgent-color "#9b0000"
         }
 
         shadow {
@@ -104,12 +98,12 @@
         slowdown 1.0
         
         window-open {
-            duration-ms 150
+            duration-ms 50
             curve "ease-out-expo"
         }
         
         window-close {
-            duration-ms 150
+            duration-ms 50
             curve "ease-out-quad"
         }
     }
@@ -135,6 +129,9 @@
 
     window-rule {
         clip-to-geometry true
+    }
+    hotkey-overlay {
+      skip-at-startup
     }
 
     binds {
@@ -280,7 +277,7 @@
 
         Mod+Q { toggle-column-tabbed-display; }
 
-        Print { screenshot; }
+        Mod+S { screenshot; }
         Ctrl+Print { screenshot-screen; }
         Alt+Print { screenshot-window; }
 

@@ -19,7 +19,7 @@
       barbar-nvim
       tagbar
       vim-startify
-
+      vim-wakatime
       # Navigation & Search
       telescope-nvim
       plenary-nvim
@@ -39,8 +39,14 @@
 
       # CoC (Completion)
       coc-nvim
+      coc-pyright
+      coc-clangd
+      coc-rust-analyzer
 
       # Language Support
+      vim-nix
+      haskell-vim
+      rust-vim
       vim-css-color
       pgsql-vim
       vimtex
@@ -216,18 +222,63 @@
       "suggest.noselect": false,
       "suggest.enablePreselect": true,
       "diagnostic.checkCurrentLine": true,
+      "diagnostic.errorSign": "✘",
+      "diagnostic.warningSign": "⚠",
+      "diagnostic.infoSign": "ℹ",
+      "diagnostic.hintSign": "➤",
       "languageserver": {
-        "ccls": {
-          "command": "ccls",
-          "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-          "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-          "initializationOptions": {
-            "cache": {
-              "directory": "/tmp/ccls"
+        "haskell": {
+          "command": "haskell-language-server-wrapper",
+          "args": ["--lsp"],
+          "filetypes": ["haskell", "lhaskell"],
+          "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+          "settings": {
+            "haskell": {
+              "formattingProvider": "ormolu",
+              "checkProject": true
             }
           }
         }
-      }
+      },
+      "python.linting.enabled": true,
+      "python.linting.pylintEnabled": true,
+      "inlayHint.enable": true,
+      "pyright.inlayHints.variableTypes": true,
+      "pyright.inlayHints.functionReturnTypes": true,
+      "clangd.path": "clangd",
+      "clangd.arguments": [
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed"
+      ],
+      "rust-analyzer.server.path": "rust-analyzer",
+      "rust-analyzer.check.command": "clippy",
+      "rust-analyzer.inlayHints.typeHints.enable": true,
+      "rust-analyzer.inlayHints.parameterHints.enable": true
     }
   '';
+
+  # LSP binaries
+  home.packages = with pkgs; [
+    # Haskell
+    haskell-language-server
+    ghc
+    cabal-install
+    ormolu
+
+    # Python
+    pyright
+    python3Packages.pylint
+
+    # C/C++
+    clang-tools
+    clang
+
+    # Rust
+    rust-analyzer
+    rustc
+    cargo
+    clippy
+  ];
 }

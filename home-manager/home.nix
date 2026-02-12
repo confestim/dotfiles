@@ -34,6 +34,7 @@
     nerd-fonts.agave
     nerd-fonts.symbols-only
     obsidian
+    ffmpeg
     obs-studio
     btop
     sdrpp
@@ -106,16 +107,17 @@
     };
   };
 
+  #obs
+  nixpkgs.config.packageOverrides = pkgs: {
+    obs-studio = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
+  };
   qt = {
     enable = true;
     platformTheme.name = "gtk";
     style.name = "adwaita-dark";
   };
-
-  xdg.configFile."gtk-3.0/settings.ini".text = ''
-    [Settings]
-    gtk-application-prefer-dark-theme=1
-  '';
 
   home.sessionVariables = {
     EDITOR = "nvim";

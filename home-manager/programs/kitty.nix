@@ -5,7 +5,7 @@
     enable = true;
 
     font = {
-      name = "Agave Nerd Font Mono";
+      name = "Fira Code Symbols";
       size = 15;
     };
 
@@ -71,12 +71,12 @@
       # Windows
       "kitty_mod+enter" = "new_window";
       "kitty_mod+w" = "close_window";
-      "kitty_mod+]" = "next_window";
-      "kitty_mod+[" = "previous_window";
+      "kitty_mod+right" = "next_window";
+      "kitty_mod+left" = "previous_window";
 
       # Tabs
-      "kitty_mod+right" = "next_tab";
-      "kitty_mod+left" = "previous_tab";
+      "kitty_mod+]" = "next_tab";
+      "kitty_mod+[" = "previous_tab";
       "kitty_mod+t" = "new_tab";
       "kitty_mod+q" = "close_tab";
 

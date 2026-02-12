@@ -24,10 +24,14 @@
       "wallenwang.ccls-plus"
       "vibhanshugarg.vibhanshugarg-codenotes"
       "myriad-dreamin.tinymist"
-      "MS-vsliveshare.vsliveshare"
+      "fill-labs.dependi"
+      "rust-lang.rust-analyzer"
     ];
 
     profiles.default.userSettings = {
+
+      "chat.agent.maxRequests"= 250000;
+
 
       # Git
       "git.confirmSync" = false;
@@ -49,7 +53,6 @@
       "editor.renderWhitespace" = "all";
       "editor.minimap.enabled" = false;
       "editor.linkedEditing" = true;
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.rulers" = [
         {
           "column" = 80;
@@ -131,11 +134,11 @@
       # Python
       "python.pythonPath" = "/usr/bin/python";
       "python.analysis.typeCheckingMode" = "basic";
-      "python.languageServer" = "Default";
       "python.createEnvironment.trigger" = "off";
+      "basedpyright.analysis.diagnosticMode"="openFilesOnly";
 
       "[python]" = {
-        "editor.defaultFormatter" = "ms-python.black-formatter";
+        "editor.defaultFormatter" = "detachhead.basedpyright";
       };
 
       # C/C++

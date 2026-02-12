@@ -160,8 +160,8 @@ in
   programs.zsh = {
     enable = true;
     shellAliases = {
-      nos = "sudo nixos-rebuild switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
-      hms = "home-manager switch && (cd ~/buffer/dotfiles && git add -A && git diff-index --quiet HEAD || git commit -m 'HM: auto update' && git push)";
+      nos = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && sudo nixos-rebuild switch && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
+      hms = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && home-manager switch && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'HM: auto update' && git push)";
     };
   };
 
@@ -245,3 +245,4 @@ in
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
+
