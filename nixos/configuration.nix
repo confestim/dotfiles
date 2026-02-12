@@ -9,7 +9,7 @@
   ...
 }:
 let
-  hostName = "eon";
+  hostName = "peon";
 in
 {
 
@@ -143,6 +143,7 @@ in
     description = "Boyan";
     extraGroups = [
       "networkmanager"
+      "adbusers"
       "wheel"
       "docker"
       "dialout"
@@ -153,6 +154,7 @@ in
     shell = pkgs.zsh;
   };
 
+  programs.adb.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
   programs.zsh = {
