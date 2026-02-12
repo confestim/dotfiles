@@ -3,7 +3,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
     # # make immutable extrensions
     mutableExtensionsDir = true;
 
@@ -24,6 +24,7 @@
       "wallenwang.ccls-plus"
       "vibhanshugarg.vibhanshugarg-codenotes"
       "myriad-dreamin.tinymist"
+      "MS-vsliveshare.vsliveshare"
     ];
 
     profiles.default.userSettings = {
@@ -96,6 +97,7 @@
         "editor.wordHighlightBorder" = "#FFD700";
         "editor.selectionHighlightBorder" = "#A9A9A9";
       };
+      "workbench.secondarySideBar.defaultVisibility" = "hidden";
 
       # Window
       "window.titleBarStyle" = "custom";
