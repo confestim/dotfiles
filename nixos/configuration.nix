@@ -9,7 +9,7 @@
   ...
 }:
 let
-  hostName = "peon";
+  hostName = "eon";
 in
 {
 
