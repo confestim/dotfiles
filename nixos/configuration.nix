@@ -154,7 +154,6 @@ in
     shell = pkgs.zsh;
   };
 
-  programs.adb.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
   programs.zsh = {
@@ -178,6 +177,7 @@ in
     curl
     python3
     niri
+    xwayland-satellite
     waybar
     gcc
     valgrind
@@ -245,4 +245,5 @@ in
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
+
 
