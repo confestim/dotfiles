@@ -26,6 +26,7 @@
       "myriad-dreamin.tinymist"
       "fill-labs.dependi"
       "rust-lang.rust-analyzer"
+      "BeardedBear.beardedicons"
     ];
 
     profiles.default.userSettings = {
@@ -136,7 +137,7 @@
       "python.analysis.typeCheckingMode" = "basic";
       "python.createEnvironment.trigger" = "off";
       "basedpyright.analysis.diagnosticMode"="openFilesOnly";
-
+      "basedpyright.importStrategy" = "useBundled";
       "[python]" = {
         "editor.defaultFormatter" = "detachhead.basedpyright";
       };
