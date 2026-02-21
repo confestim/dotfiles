@@ -27,9 +27,13 @@
       lt = "eza --tree";
       update = "home-manager switch";
     };
-
+    
+    initExtraFirst = ''
+      DISABLE_AUTO_UPDATE="true"
+      DISABLE_MAGIC_FUNCTIONS="true"
+      DISABLE_COMPFIX="true"
+    '';
     initContent = ''
-      zmodload zsh/zprof
       # fzf integration
       if [ -n "''${commands[fzf-share]}" ]; then
         source "$(fzf-share)/key-bindings.zsh"
@@ -47,8 +51,6 @@
       echo "⠀⠀⠀⣷⣄⡀⠀⠀⠀⢀⣴⡟⠿⠃⠀⠀"
       echo "⠀⠀⠀⢻⣿⣿⠉⠉⢹⣿⣿⠁⠀⠀⠀⠀"
       echo "⠀⠀⠀⠀⠉⠁⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀"
-    
-    zprof
     '';
   };
 }
