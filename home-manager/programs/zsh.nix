@@ -5,20 +5,18 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    zplug = {
-      enable = true;
-      plugins = [
-        {
-          name = "dracula/zsh";
-          tags = [ "as:theme" ];
-        }
-      ];
-    };
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "sudo" "docker" "z" ];
-    };
+    plugins = [
+      {
+        name = "dracula-zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "dracula";
+          repo = "zsh";
+          rev = "v1.2.5";
+          sha256 = "sha256-4lP4++Ewz00siVnMnjcfXhPnJndE6ANDjEWeswkmobg=";
+        };
+        file = "dracula.zsh-theme";
+      }
+    ];
 
     shellAliases = {
       ls = "eza";
@@ -27,13 +25,10 @@
       lt = "eza --tree";
       update = "home-manager switch";
     };
-    zprof.enable = true;
-    initExtraFirst = ''
-      DISABLE_AUTO_UPDATE="true"
-      DISABLE_MAGIC_FUNCTIONS="true"
-      DISABLE_COMPFIX="true"
-    '';
+
     initContent = ''
+      ZSH_THEME="dracula"
+
       # fzf integration
       if [ -n "''${commands[fzf-share]}" ]; then
         source "$(fzf-share)/key-bindings.zsh"
@@ -52,5 +47,10 @@
       echo "⠀⠀⠀⢻⣿⣿⠉⠉⢹⣿⣿⠁⠀⠀⠀⠀"
       echo "⠀⠀⠀⠀⠉⠁⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀"
     '';
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }
