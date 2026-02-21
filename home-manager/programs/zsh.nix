@@ -29,6 +29,7 @@
     };
 
     initContent = ''
+      zmodload zsh/zprof
       # fzf integration
       if [ -n "''${commands[fzf-share]}" ]; then
         source "$(fzf-share)/key-bindings.zsh"
@@ -46,6 +47,8 @@
       echo "⠀⠀⠀⣷⣄⡀⠀⠀⠀⢀⣴⡟⠿⠃⠀⠀"
       echo "⠀⠀⠀⢻⣿⣿⠉⠉⢹⣿⣿⠁⠀⠀⠀⠀"
       echo "⠀⠀⠀⠀⠉⠁⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀"
+    
+    zprof
     '';
   };
 }
