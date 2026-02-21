@@ -27,7 +27,7 @@
       lt = "eza --tree";
       update = "home-manager switch";
     };
-    
+    zprof.enable = true;
     initExtraFirst = ''
       DISABLE_AUTO_UPDATE="true"
       DISABLE_MAGIC_FUNCTIONS="true"
