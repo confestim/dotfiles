@@ -40,6 +40,7 @@
     sdrpp
     pavucontrol
     eza
+    rawtherapee
     viber
     signal-desktop
     vesktop
