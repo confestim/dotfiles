@@ -30,6 +30,9 @@
         warp-mouse-to-focus
         focus-follows-mouse max-scroll-amount="0%"
     }
+    debug {
+       render-drm-device "/dev/dri/card1"
+    }
 
     output "DP-1" {
         mode "1920x1080@143.855"
