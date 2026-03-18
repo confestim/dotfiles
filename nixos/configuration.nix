@@ -83,7 +83,16 @@ in
   };
 
   # udev
-  services.udev.packages = [ pkgs.stlink ];
+  services.udev.packages = [ 
+    pkgs.stlink
+    pkgs.platformio-core
+    pkgs.openocd
+  ];
+  services.udev.extraRules = ''
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", GROUP="plugdev"
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000a", MODE="0666", GROUP="plugdev"
+'';
+  
   # Enable greetd with tuigreet
   services.greetd = {
     enable = true;
@@ -202,12 +211,6 @@ in
   services.tumbler.enable = true;
   programs.waybar.enable = true;
   # This is the dumbest shit ever
-  services.gvfs = {
-    enable = true;
-    package = pkgs.gvfs.override {
-      samba = null;
-    };
-  };
   programs.niri.enable = true;
   programs.git = {
     enable = true;
