@@ -46,7 +46,7 @@
     vesktop
     anki
     wl-clipboard
-    neofetch
+    fastfetch
     thunderbird
     nwg-bar
     kicad
