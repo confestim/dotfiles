@@ -85,6 +85,7 @@ in
   # udev
   services.udev.packages = [ 
     pkgs.stlink
+    pkgs.libmtp.out
     pkgs.platformio-core
     pkgs.openocd
   ];
