@@ -32,6 +32,8 @@
 
   home.packages = with pkgs; [
     nerd-fonts.agave
+    chromium
+    unzip
     nerd-fonts.symbols-only
     obsidian
     ffmpeg
