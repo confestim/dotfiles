@@ -129,9 +129,11 @@
     window-rule {
         clip-to-geometry true
     }
+    clipboard {
+      disable-primary
+    }
     hotkey-overlay {
       skip-at-startup
-      disable-primary
     }
 
     binds {
