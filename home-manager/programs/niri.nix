@@ -131,6 +131,7 @@
     }
     hotkey-overlay {
       skip-at-startup
+      disable-primary
     }
 
     binds {
