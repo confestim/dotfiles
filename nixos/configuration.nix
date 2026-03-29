@@ -66,6 +66,9 @@ in
   services.xserver.enable = true;
   services.xserver.displayManager.startx.enable = true;
 
+  #usb
+  services.udisks2.enable = true;
+
   # portals
   xdg.portal = {
     enable = true;
