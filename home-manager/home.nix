@@ -31,6 +31,7 @@
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
+    qt6.qtmultimedia
     nerd-fonts.agave
     chromium
     unzip
