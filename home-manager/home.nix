@@ -127,6 +127,7 @@
     EDITOR = "nvim";
     VISUAL = "codium";
     GSK_RENDERER = "gl";
+    LD_LIBRARY_PATH = "${pkgs.qt6.qtmultimedia}/lib:$LD_LIBRARY_PATH";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
   };
 
