@@ -22,7 +22,7 @@
         }
 
         mouse {
-                accel-speed -0.5
+                accel-speed -0.2
                 accel-profile "flat" // Optional: disables acceleration
             }
 
