@@ -143,6 +143,7 @@
         Mod+Shift+Slash { show-hotkey-overlay; }
 
         Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+        Mod+Shift+Return { spawn "kitten quick-access-terminal";}
         Mod+A hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
         Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
         Mod+F hotkey-overlay-title="Open a Firefox" { spawn "firefox"; }
