@@ -22,7 +22,9 @@
         }
 
         mouse {
-        }
+                accel-speed -0.5
+                accel-profile "flat" // Optional: disables acceleration
+            }
 
         trackpoint {
         }
