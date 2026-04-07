@@ -32,16 +32,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  fileSystems."/mnt/data" = {
-    device = "/dev/nvme0n1p2";
-    fsType = "exfat";
-    options = [
-      "noauto"
-      "x-systemd.automount"
-      "defaults"
-    ];
-  };
-
   # CIFS/SMB network mounts
   fileSystems."/mnt/AtmoSphere" = {
     device = "//192.168.178.69/AtmoSphere";
