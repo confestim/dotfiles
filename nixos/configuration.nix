@@ -23,17 +23,13 @@ in
   hardware.graphics.enable = true;
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false; # lanzaboote overrides this
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub2-theme = {
+  boot.lanzaboote = {
     enable = true;
-    theme = "tela";
-    footer = true;
-    customResolution = "1600x900"; # Optional: Set a custom resolution
+    pkiBundle = "/var/lib/sbctl";
   };
+
   virtualisation.docker.enable = true;
   networking.hostName = hostName;
 
