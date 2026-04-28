@@ -18,6 +18,7 @@ in
     ./hardware-configuration.nix
     ./hosts/${hostName}.nix
   ];
+  hardware.keyboard.qmk.enable = true;
 
   hardware.rtl-sdr.enable = true;
   hardware.graphics.enable = true;
@@ -193,6 +194,7 @@ in
 
   environment.systemPackages = with pkgs; [
     wget
+    qmk
     fzf
     vim
     curl
