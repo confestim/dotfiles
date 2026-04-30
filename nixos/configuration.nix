@@ -88,6 +88,9 @@ in
   services.udev.packages = [ 
     pkgs.stlink
     pkgs.libmtp.out
+    pkgs.qmk
+    pkgs.qmk-udev-rules
+    pkgs.via
     pkgs.platformio-core
     pkgs.openocd
   ];
