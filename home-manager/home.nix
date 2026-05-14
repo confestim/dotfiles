@@ -33,6 +33,7 @@
   home.packages = with pkgs; [
     qt6.qtmultimedia
     nerd-fonts.agave
+    localsend
     chromium
     unzip
     nerd-fonts.symbols-only
