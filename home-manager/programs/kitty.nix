@@ -16,6 +16,7 @@
       # Performance
       repaint_delay = 10;
       input_delay = 3;
+      paste_actions = "no-op";
       sync_to_monitor = true;
 
       # Window layout
