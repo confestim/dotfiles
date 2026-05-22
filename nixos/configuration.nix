@@ -177,6 +177,8 @@
   ];
   nix.settings.trusted-users = [ "root" "boyan" ];
 
+  environment.variables.__ETC_ZSHRC_SOURCED = "1";
+
   environment.systemPackages = with pkgs; [
     wget
     qmk
