@@ -1,6 +1,10 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
-  home.packages = [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+  imports = [
+    inputs.noctalia.homeModules.default
   ];
+
+  programs.noctalia-shell = {
+    enable = true;
+  };
 }
