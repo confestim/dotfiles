@@ -82,9 +82,9 @@
 
       # Random ASCII art of hostname
       if command -v figlet &>/dev/null; then
-        fontdir="$(figlet -I2)/fonts"
-        font="$(ls "$fontdir"/*.flf 2>/dev/null | shuf -n1 | xargs -I{} basename {} .flf)"
-        figlet -f "$font" "$(hostname)"
+        fontdir="$(figlet -I2)"
+        font="$(find "$fontdir" -name "*.flf" 2>/dev/null | shuf -n1 | xargs -I{} basename {} .flf)"
+        [[ -n "$font" ]] && figlet -f "$font" "$(hostname)"
       fi
     '';
   };
