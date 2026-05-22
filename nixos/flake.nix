@@ -17,8 +17,19 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+          ./hardware-configuration.nix
+          ./hosts/eon.nix
           grub2-themes.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
+        ];
+      };
+      peon = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./configuration.nix
+          # ./hosts/peon/hardware-configuration.nix
+          ./hosts/peon.nix
         ];
       };
     };
