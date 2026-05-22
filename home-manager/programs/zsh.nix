@@ -1,4 +1,9 @@
 { config, pkgs, lib, ... }: {
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -34,17 +39,22 @@
       }
     ];
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "sudo" "docker" "z" ];
-    };
-
     shellAliases = {
       ls = "eza";
       ll = "eza -la";
       la = "eza -a";
       lt = "eza --tree";
       update = "home-manager switch";
+      # git aliases (previously from oh-my-zsh git plugin)
+      g = "git";
+      ga = "git add";
+      gc = "git commit";
+      gco = "git checkout";
+      gd = "git diff";
+      gl = "git pull";
+      gp = "git push";
+      gst = "git status";
+      glog = "git log --oneline --graph --decorate";
     };
 
     initContent = ''
@@ -53,6 +63,18 @@
         source "$(fzf-share)/key-bindings.zsh"
         source "$(fzf-share)/completion.zsh"
       fi
+
+      # sudo plugin: Esc-Esc to prepend sudo
+      sudo-command-line() {
+        [[ -z $BUFFER ]] && zle up-history
+        if [[ $BUFFER == sudo\ * ]]; then
+          LBUFFER="''${LBUFFER#sudo }"
+        else
+          LBUFFER="sudo $LBUFFER"
+        fi
+      }
+      zle -N sudo-command-line
+      bindkey '\e\e' sudo-command-line
 
       # Show nix-shell packages in prompt
       if [[ -n "$IN_NIX_SHELL" ]]; then
