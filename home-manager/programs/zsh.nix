@@ -5,16 +5,20 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    plugins = [
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
+      }
+    ];
+
     zplug = {
       enable = true;
       plugins = [
         {
           name = "dracula/zsh";
           tags = [ "as:theme" ];
-        }
-        {
-          name = "chisui/zsh-nix-shell";
-          tags = [ "at:main" ];
         }
       ];
     };
