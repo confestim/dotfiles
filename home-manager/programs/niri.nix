@@ -95,7 +95,7 @@
 
     spawn-at-startup "swaybg" "-i" "/home/boyan/Pics/Wallpapers/comment.png" "-m" "fill"
 
-    spawn-at-startup "noctalia"
+    spawn-at-startup "noctalia-shell"
     spawn-at-startup "udiskie" "--tray"
 
     screenshot-path null
