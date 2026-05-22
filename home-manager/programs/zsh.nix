@@ -5,6 +5,12 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    initExtraFirst = ''
+      ZSH_DISABLE_COMPFIX=true
+      ZPLUG_LOG_LOAD_SUCCESS=false
+      ZPLUG_LOG_LOAD_FAILURE=false
+    '';
+
     plugins = [
       {
         name = "zsh-nix-shell";
