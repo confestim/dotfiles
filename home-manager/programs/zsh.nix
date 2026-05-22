@@ -26,6 +26,7 @@
       la = "eza -a";
       lt = "eza --tree";
       update = "home-manager switch";
+      nix-shell = "nix-shell --run zsh";
     };
 
     initContent = ''
