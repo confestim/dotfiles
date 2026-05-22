@@ -95,16 +95,8 @@
         done < <(find "$fontdir" -name "*.flf" ! -name "demo_*" ! -name "chart*" ! -name "clb*" ! -name "clr*" | shuf)
       fi
 
-      # Last login status bar
-      last_line="$(last -1 -R "$USER" 2>/dev/null | head -1)"
-      if [[ -n "$last_line" ]]; then
-        last_time="$(echo "$last_line" | awk '{print $3, $4, $5, $6}')"
-        last_from="$(echo "$last_line" | awk '{print $2}')"
-        cols="''${COLUMNS:-80}"
-        msg=" Last login: $last_time from $last_from "
-        pad=$(( (cols - ''${#msg}) ))
-        printf "\e[7m%s%''${pad}s\e[0m\n" "$msg" ""
-      fi
+      # Last login line
+      last -1 -R "$USER" 2>/dev/null | awk 'NR==1 && NF {print "Last login:", $3, $4, $5, $6, "on", $2}'
     '';
   };
 }
