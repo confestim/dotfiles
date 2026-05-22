@@ -83,8 +83,16 @@
       # Random ASCII art of hostname
       if command -v figlet &>/dev/null; then
         fontdir="$(figlet -I2)"
-        font="$(find "$fontdir" -name "*.flf" 2>/dev/null | shuf -n1 | xargs -I{} basename {} .flf)"
-        [[ -n "$font" ]] && figlet -f "$font" "$(hostname)"
+        hostname="$(hostname)"
+        while IFS= read -r fontpath; do
+          font="$(basename "$fontpath" .flf)"
+          out="$(figlet -f "$font" -w 80 "$hostname" 2>/dev/null)"
+          lines="$(echo "$out" | wc -l)"
+          if [[ -n "$out" && $lines -le 7 && $lines -ge 3 ]]; then
+            echo "$out"
+            break
+          fi
+        done < <(find "$fontdir" -name "*.flf" ! -name "demo_*" ! -name "chart*" ! -name "clb*" ! -name "clr*" | shuf)
       fi
     '';
   };
