@@ -5,9 +5,16 @@
     syntaxHighlighting.enable = true;
 
     completionInit = ''
-      autoload -Uz compinit
-      compinit -C
-    '';
+  autoload -Uz compinit
+  fpath=(''${(ou)fpath}) # Stable fpath order hence consistent cache hit.
+  if [[ ! -s ''${ZDOTDIR:-$HOME}/.zcompdump || \
+        /run/current-system/sw -nt ''${ZDOTDIR:-$HOME}/.zcompdump ]]; then
+    compinit
+    zcompile ''${ZDOTDIR:-$HOME}/.zcompdump 2>/dev/null
+  else
+    compinit -C
+  fi
+'';
 
     plugins = [
       {
