@@ -52,6 +52,7 @@
       buildInputs = (old.buildInputs or []) ++ [ qt6.qtmultimedia ];
     }))
 
+    figlet
     wl-clipboard
     fastfetch
     thunderbird
