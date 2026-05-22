@@ -6,7 +6,7 @@
     ./programs/kitty.nix
     ./programs/niri.nix
     ./programs/zsh.nix
-    ./programs/waybar.nix
+    ./programs/noctalia.nix
     ./programs/swaylock.nix
     ./programs/rofi.nix
     ./files.nix

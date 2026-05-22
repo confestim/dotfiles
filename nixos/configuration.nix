@@ -194,6 +194,7 @@ in
     "nix-command"
     "flakes"
   ];
+  nix.settings.trusted-users = [ "root" "boyan" ];
 
   environment.systemPackages = with pkgs; [
     wget

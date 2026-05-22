@@ -8,7 +8,7 @@
   ];
 
   xdg.mimeApps = {
-    enable = true;
+    enable = true; 
     defaultApplications = {
       # Directories and archives
       "inode/directory" = "thunar.desktop";
