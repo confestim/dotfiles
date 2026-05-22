@@ -13,7 +13,7 @@
 
   services.samba = {
     enable = true;
-    securityType = "user";
+    settings.global.security = "user";
   };
 
   # Load nvidia driver for Xorg and Wayland
