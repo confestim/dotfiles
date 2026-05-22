@@ -54,6 +54,12 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
+      # Show nix-shell packages in prompt
+      if [[ -n "$IN_NIX_SHELL" ]]; then
+        nix_pkgs="''${NIX_SHELL_PACKAGES:-$name}"
+        RPROMPT="%F{6}[nix: ''${nix_pkgs}]%f''${RPROMPT:+ $RPROMPT}"
+      fi
+
       echo "⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
       echo "⠀⠀⠀⠀⢰⣿⡿⠗⠀⠠⠄⡀⠀⠀⠀⠀"
       echo "⠀⠀⠀⠀⡜⠁⠀⠀⠀⠀⠀⠈⠑⢶⣶⡄"
