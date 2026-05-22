@@ -1,15 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   programs.zsh = {
     enable = true;
-    # enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    initExtraFirst = ''
-      ZSH_DISABLE_COMPFIX=true
-      ZPLUG_LOG_LOAD_SUCCESS=false
-      ZPLUG_LOG_LOAD_FAILURE=false
-    '';
 
     plugins = [
       {
@@ -17,17 +10,17 @@
         file = "nix-shell.plugin.zsh";
         src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
       }
+      {
+        name = "dracula";
+        file = "dracula.zsh-theme";
+        src = pkgs.fetchFromGitHub {
+          owner = "dracula";
+          repo = "zsh";
+          rev = "master";
+          sha256 = "1si457c4x11bz54lhpqlgzkd29pvwm8bzr6gizs03xpwf0gx8wxs";
+        };
+      }
     ];
-
-    zplug = {
-      enable = true;
-      plugins = [
-        {
-          name = "dracula/zsh";
-          tags = [ "as:theme" ];
-        }
-      ];
-    };
 
     oh-my-zsh = {
       enable = true;
