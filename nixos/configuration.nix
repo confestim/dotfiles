@@ -160,8 +160,6 @@
     shell = pkgs.zsh;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -193,9 +191,6 @@
     gcc
     valgrind
     git
-    thunar
-    thunar-volman
-    thunar-archive-plugin
     gvfs
     usbutils
   ];

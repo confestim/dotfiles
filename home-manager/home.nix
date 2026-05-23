@@ -37,6 +37,7 @@
     chromium
     firefox
     thunar
+    thunar-volman
     thunar-archive-plugin
     unzip
     nerd-fonts.symbols-only
