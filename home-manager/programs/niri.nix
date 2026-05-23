@@ -153,7 +153,7 @@
         Mod+E hotkey-overlay-title="Open a Code Editor: codium" { spawn "env" "ELECTRON_OZONE_PLATFORM_HINT=wayland" "codium"; }
         Mod+Shift+E hotkey-overlay-title="Open a Sublime Text: subl" { spawn "subl"; }
         Mod+Shift+F hotkey-overlay-title="Open a File Manager: nautilus" { spawn "nautilus"; }
-        Mod+Shift+S hotkey-overlay-title="Power Off / Restart / Suspend: nwg-bar" { spawn "nwg-bar"; }
+        Mod+Shift+S hotkey-overlay-title="Session Menu: noctalia" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

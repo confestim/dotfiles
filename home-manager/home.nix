@@ -71,7 +71,6 @@
     wl-clipboard
     fastfetch
     thunderbird
-    nwg-bar
     kicad
     # Programming
     ghc
