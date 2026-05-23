@@ -56,6 +56,18 @@
       buildInputs = (old.buildInputs or []) ++ [ qt6.qtmultimedia ];
     }))
 
+    # Screenshot / OCR / screen tools
+    grim
+    slurp
+    tesseract
+    imagemagick
+    zbar
+    wl-screenrec
+    wf-recorder
+    hyprpicker
+    jq
+    (python3.withPackages (ps: [ ps.pygobject3 ]))
+
     figlet
     wl-clipboard
     fastfetch
