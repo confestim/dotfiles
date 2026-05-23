@@ -8,7 +8,6 @@
     ./programs/zsh.nix
     ./programs/noctalia.nix
     ./programs/swaylock.nix
-    ./programs/rofi.nix
     ./files.nix
   ];
 
@@ -80,7 +79,6 @@
     gnumake
     uv
     fira-code
-    fuzzel
     swaylock-effects
     swaybg
     brightnessctl

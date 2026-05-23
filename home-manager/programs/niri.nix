@@ -144,7 +144,8 @@
 
         Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
         Mod+Shift+Return { spawn "kitten quick-access-terminal";}
-        Mod+A hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
+        Mod+Space hotkey-overlay-title="Open Launcher: noctalia" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+        Mod+A hotkey-overlay-title="Open Launcher: noctalia" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
         Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
         Mod+F hotkey-overlay-title="Open a Firefox" { spawn "firefox"; }
         Mod+M hotkey-overlay-title="Open a Thunderbird" { spawn "thunderbird"; }
