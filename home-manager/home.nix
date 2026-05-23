@@ -35,6 +35,9 @@
     nerd-fonts.agave
     localsend
     chromium
+    firefox
+    thunar
+    thunar-archive-plugin
     unzip
     nerd-fonts.symbols-only
     obsidian
@@ -133,6 +136,16 @@
     VISUAL = "codium";
     GSK_RENDERER = "gl";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "inode/directory" = "thunar.desktop";
+    };
   };
 
   xdg.desktopEntries.nvim = {
