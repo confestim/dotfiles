@@ -38,6 +38,7 @@
     thunar
     thunar-volman
     thunar-archive-plugin
+    xarchiver
     unzip
     nerd-fonts.symbols-only
     obsidian
@@ -146,7 +147,10 @@
     VISUAL = "codium";
     GSK_RENDERER = "gl";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
+    TERMINAL = "kitty";
   };
+
+  home.file.".config/xdg-terminals.list".text = "kitty.desktop\n";
 
   xdg.mimeApps = {
     enable = true;

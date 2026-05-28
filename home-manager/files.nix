@@ -7,14 +7,39 @@
     xdg-utils
   ];
 
+  # Thunar uses the XFCE exo-open helper system to launch a terminal emulator.
+  # Define kitty as an XFCE TerminalEmulator helper and set it as the default.
+  home.file.".local/share/xfce4/helpers/kitty.desktop".text = ''
+    [Desktop Entry]
+    NoDisplay=true
+    Version=0.9.0
+    Encoding=UTF-8
+    Type=X-XFCE-Helper
+    X-XFCE-Category=TerminalEmulator
+    X-XFCE-CommandsWithParameter=kitty %s
+    Icon=kitty
+    X-XFCE-Commands=kitty
+    Name=kitty
+  '';
+
+  home.file.".config/xfce4/helpers.rc".text = ''
+    TerminalEmulator=kitty
+  '';
+
   xdg.mimeApps = {
     enable = true; 
     defaultApplications = {
       # Directories and archives
       "inode/directory" = "thunar.desktop";
-      "application/zip" = "thunar.desktop";
-      "application/x-tar" = "thunar.desktop";
-      "application/gzip" = "thunar.desktop";
+      "application/zip" = "xarchiver.desktop";
+      "application/x-zip-compressed" = "xarchiver.desktop";
+      "application/x-zip" = "xarchiver.desktop";
+      "application/x-tar" = "xarchiver.desktop";
+      "application/gzip" = "xarchiver.desktop";
+      "application/x-bzip2" = "xarchiver.desktop";
+      "application/x-xz" = "xarchiver.desktop";
+      "application/x-7z-compressed" = "xarchiver.desktop";
+      "application/x-rar" = "xarchiver.desktop";
       
       # Images
       "image/png" = "imv.desktop";

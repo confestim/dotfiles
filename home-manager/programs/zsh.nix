@@ -43,6 +43,7 @@
       la = "eza -a";
       lt = "eza --tree";
       update = "home-manager switch";
+      hms = "home-manager switch -b backup && git -C ~/buffer/dotfiles add -A && git -C ~/buffer/dotfiles commit -m 'hms' && git -C ~/buffer/dotfiles push";
       # git aliases (previously from oh-my-zsh git plugin)
       g = "git";
       ga = "git add";
