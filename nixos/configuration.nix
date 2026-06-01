@@ -30,7 +30,6 @@ in
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-
   virtualisation.docker.enable = true;
   networking.hostName = hostName;
 
@@ -62,7 +61,10 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.displayManager.startx.enable = true;
-
+  programs.nix-ld.libraries = with pkgs; [
+    libsecret
+    glib
+  ];
   #usb
   services.udisks2.enable = true;
   # services.devmon.enable = true;
