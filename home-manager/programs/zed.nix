@@ -1,14 +1,6 @@
-{pkgs, ...}: let
-  zed-fhs = pkgs.buildFHSEnv {
-    name = "zed";
-    targetPkgs = pkgs:
-      with pkgs; [
-        zed-editor
-      ];
-    runScript = "zed";
-  };
-in {
-  home.packages = [zed-fhs];
+{pkgs, ...}:
+{
+  home.packages = [pkgs.zed-editor-fhs];
 
   xdg.configFile."zed/settings.json".text = builtins.toJSON {
     theme = {
