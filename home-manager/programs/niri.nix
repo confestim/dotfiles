@@ -150,7 +150,7 @@
         Mod+F hotkey-overlay-title="Open a Firefox" { spawn "firefox"; }
         Mod+M hotkey-overlay-title="Open a Thunderbird" { spawn "thunderbird"; }
         Mod+D hotkey-overlay-title="Open a Desktop Environment: vesktop" { spawn "env" "ELECTRON_OZONE_PLATFORM_HINT=wayland" "vesktop"; }
-        Mod+E hotkey-overlay-title="Open a Code Editor: codium" { spawn "env" "ELECTRON_OZONE_PLATFORM_HINT=wayland" "codium"; }
+        Mod+E hotkey-overlay-title="Open a Code Editor: codium" { spawn "env" "ELECTRON_OZONE_PLATFORM_HINT=wayland" "zeditor"; }
         Mod+Shift+E hotkey-overlay-title="Open a Sublime Text: subl" { spawn "subl"; }
         Mod+Shift+F hotkey-overlay-title="Open a File Manager: nautilus" { spawn "nautilus"; }
         Mod+Shift+S hotkey-overlay-title="Session Menu: noctalia" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
