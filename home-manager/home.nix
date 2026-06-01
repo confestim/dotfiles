@@ -1,7 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
-    ./programs/vscodium.nix
+    ./programs/zed.nix
     ./programs/nvim.nix
     ./programs/kitty.nix
     ./programs/niri.nix
@@ -34,11 +34,6 @@
     nerd-fonts.agave
     localsend
     chromium
-    firefox
-    thunar
-    thunar-volman
-    thunar-archive-plugin
-    xarchiver
     unzip
     nerd-fonts.symbols-only
     obsidian
@@ -56,22 +51,10 @@
       buildInputs = (old.buildInputs or []) ++ [ qt6.qtmultimedia ];
     }))
 
-    # Screenshot / OCR / screen tools
-    grim
-    slurp
-    tesseract
-    imagemagick
-    zbar
-    wl-screenrec
-    wf-recorder
-    hyprpicker
-    jq
-    (python3.withPackages (ps: [ ps.pygobject3 ]))
-
-    figlet
     wl-clipboard
     fastfetch
     thunderbird
+    nwg-bar
     kicad
     # Programming
     ghc
@@ -79,6 +62,7 @@
     gnumake
     uv
     fira-code
+    fuzzel
     swaylock-effects
     swaybg
     brightnessctl
@@ -92,6 +76,11 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "pkcs11" "secrets" "ssh" ];
+  };
 
   # Notification daemon
   services.mako = {
@@ -147,19 +136,6 @@
     VISUAL = "codium";
     GSK_RENDERER = "gl";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
-    TERMINAL = "kitty";
-  };
-
-  home.file.".config/xdg-terminals.list".text = "kitty.desktop\n";
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "text/html" = "firefox.desktop";
-      "inode/directory" = "thunar.desktop";
-    };
   };
 
   xdg.desktopEntries.nvim = {

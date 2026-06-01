@@ -8,12 +8,31 @@
   pkgs,
   ...
 }:
+let
+  hostName = "eon";
+in
 {
+
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./hosts/${hostName}.nix
+  ];
   hardware.keyboard.qmk.enable = true;
 
   hardware.rtl-sdr.enable = true;
   hardware.graphics.enable = true;
+  # Bootloader.
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false; # lanzaboote overrides this
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
 
+  virtualisation.docker.enable = true;
+  networking.hostName = hostName;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -160,10 +179,12 @@
     shell = pkgs.zsh;
   };
 
+  # Install firefox.
+  programs.firefox.enable = true;
   programs.zsh = {
     enable = true;
     shellAliases = {
-      nos = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && sudo nixos-rebuild switch --flake $DOTFILES/nixos#$(hostname) && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
+      nos = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && sudo nixos-rebuild switch && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
       hms = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && home-manager switch && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'HM: auto update' && git push)";
     };
   };
@@ -174,8 +195,6 @@
     "flakes"
   ];
   nix.settings.trusted-users = [ "root" "boyan" ];
-
-  environment.variables.__ETC_ZSHRC_SOURCED = "1";
 
   environment.systemPackages = with pkgs; [
     wget
@@ -188,14 +207,19 @@
     python3
     niri
     xwayland-satellite
+    waybar
     gcc
     valgrind
     git
+    thunar
+    thunar-volman
+    thunar-archive-plugin
     gvfs
     usbutils
   ];
   programs.nix-ld.enable = true;
   services.tumbler.enable = true;
+  programs.waybar.enable = true;
   # This is the dumbest shit ever
   programs.niri.enable = true;
   programs.git = {
