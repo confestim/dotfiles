@@ -54,6 +54,7 @@
     wl-clipboard
     fastfetch
     thunderbird
+    gcr
     nwg-bar
     kicad
     # Programming
