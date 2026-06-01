@@ -85,7 +85,7 @@ in
   };
 
   # udev
-  services.udev.packages = [ 
+  services.udev.packages = [
     pkgs.stlink
     pkgs.libmtp.out
     pkgs.qmk-udev-rules
@@ -97,7 +97,7 @@ in
   SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", GROUP="plugdev"
   SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000a", MODE="0666", GROUP="plugdev"
 '';
-  
+
   # Enable greetd with tuigreet
   services.greetd = {
     enable = true;
@@ -202,6 +202,7 @@ in
     via
     qmk-udev-rules
     fzf
+    nix-ld
     vim
     curl
     python3
@@ -268,5 +269,3 @@ in
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
-
