@@ -59,27 +59,7 @@
     pkgs.openocd
   ];
 
-  # Enable greetd with tuigreet
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = ''
-          ${pkgs.tuigreet}/bin/tuigreet \
-            --time \
-            --asterisks \
-            --remember \
-            --remember-user-session \
-            --cmd niri
-        '';
-        user = "greeter";
-      };
-    };
-  };
   services.flatpak.enable = true;
-  systemd.tmpfiles.rules = [
-    "d '/var/cache/tuigreet' - greeter greeter - -"
-  ];
 
   security.pam.services.greetd.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
@@ -222,6 +202,8 @@
   SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", GROUP="plugdev"
   SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000a", MODE="0666", GROUP="plugdev"
 '';
+
+  systemd.services.dbus.stopIfChanged = false;
 
   system.stateVersion = "25.11"; # Did you read the comment?
 

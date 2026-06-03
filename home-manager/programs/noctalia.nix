@@ -83,6 +83,15 @@
         widgets = {
           center = [
             {
+              clockColor = "none";
+              customFont = "";
+              formatHorizontal = "HH:mm ddd, MMM dd";
+              formatVertical = "HH mm - dd MM";
+              id = "Clock";
+              tooltipFormat = "HH:mm ddd, MMM dd";
+              useCustomFont = false;
+            }
+            {
               characterCount = 2;
               colorizeIcons = false;
               emptyColor = "secondary";
@@ -138,6 +147,15 @@
               textColor = "primary";
               useFixedWidth = false;
             }
+            {
+              deviceNativePath = "__default__";
+              displayMode = "graphic-clean";
+              hideIfIdle = false;
+              hideIfNotDetected = true;
+              id = "Battery";
+              showNoctaliaPerformance = false;
+              showPowerProfiles = false;
+            }
           ];
           right = [
             {
@@ -164,81 +182,11 @@
               middleClickCommand = "pwvucontrol || pavucontrol";
               textColor = "none";
             }
-            {
-              defaultSettings = {
-                connectedColor = "primary";
-                disableToastNotifications = false;
-                disconnectedColor = "none";
-                displayMode = "onhover";
-              };
-              id = "plugin:network-manager-vpn";
-            }
-            {
-              defaultSettings = {
-                compactMode = false;
-                defaultDuration = 0;
-                iconColor = "none";
-                textColor = "none";
-              };
-              id = "plugin:timer";
-            }
-            {
-              defaultSettings = {
-                colorHistory = [ ];
-                detectedRecorder = "";
-                filenameFormat = "";
-                gifMaxSeconds = 30;
-                installedLangs = [ "eng" ];
-                paletteColors = [ ];
-                recordCopyToClipboard = false;
-                recordSkipConfirmation = false;
-                screenshotPath = "";
-                selectedOcrLang = "eng";
-                transAvailable = false;
-                videoPath = "";
-              };
-              id = "plugin:screen-toolkit";
-            }
-            {
-              defaultSettings = {
-                autoPaste = false;
-                autoPasteDelay = 300;
-                autoPasteOnRightClick = false;
-                cardColors = { };
-                customColors = { };
-                enableTodoIntegration = false;
-                fullscreenMode = false;
-                hidePanelBackground = false;
-                notecardsEnabled = true;
-                panelHeight = 0;
-                panelWidth = 1450;
-                pincardsEnabled = true;
-                showCloseButton = true;
-              };
-              id = "plugin:clipper";
-            }
-            {
-              defaultSettings = {
-                completedCount = 0;
-                count = 0;
-                current_page_id = 0;
-                exportEmptySections = false;
-                exportFormat = "markdown";
-                exportPath = "~/Documents";
-                isExpanded = false;
-                pages = [ { id = 0; name = "General"; } ];
-                priorityColors = {
-                  high = "#f44336";
-                  low = "#9e9e9e";
-                  medium = "#2196f3";
-                };
-                showBackground = true;
-                showCompleted = true;
-                todos = [ ];
-                useCustomColors = false;
-              };
-              id = "plugin:todo";
-            }
+            { id = "plugin:timer"; }
+            { id = "plugin:network-manager-vpn"; }
+            { id = "plugin:screen-toolkit"; }
+            { id = "plugin:todo"; }
+            { id = "plugin:clipper"; }
             {
               colorizeDistroLogo = false;
               colorizeSystemIcon = "primary";
@@ -330,6 +278,7 @@
                 x = 800;
                 y = 80;
               }
+              { id = "Weather"; roundedCorners = true; scale = 1.1206869230181415; showBackground = false; x = 800; y = 80; }
               {
                 hideMode = "visible";
                 id = "MediaPlayer";
@@ -355,32 +304,6 @@
                 width = 320;
                 x = 60;
                 y = 100;
-              }
-              {
-                defaultSettings = {
-                  completedCount = 0;
-                  count = 0;
-                  current_page_id = 0;
-                  exportEmptySections = false;
-                  exportFormat = "markdown";
-                  exportPath = "~/Documents";
-                  isExpanded = false;
-                  pages = [ { id = 0; name = "General"; } ];
-                  priorityColors = {
-                    high = "#f44336";
-                    low = "#9e9e9e";
-                    medium = "#2196f3";
-                  };
-                  showBackground = true;
-                  showCompleted = true;
-                  todos = [ ];
-                  useCustomColors = false;
-                };
-                id = "plugin:todo";
-                scale = 1.267861044194414;
-                showBackground = true;
-                x = 60;
-                y = 820;
               }
               {
                 diskPath = "/";
@@ -674,19 +597,107 @@
         transitionType = [ "fade" "disc" "stripes" "wipe" "pixelate" "honeycomb" ];
         useOriginalImages = false;
         useSolidColor = false;
-        useWallhaven = false;
+        useWallhaven = true;
         viewMode = "recursive";
         wallhavenApiKey = "";
         wallhavenCategories = "111";
         wallhavenOrder = "desc";
         wallhavenPurity = "100";
-        wallhavenQuery = "";
+        wallhavenQuery = "gradient";
         wallhavenRatios = "";
         wallhavenResolutionHeight = "";
         wallhavenResolutionMode = "atleast";
         wallhavenResolutionWidth = "";
         wallhavenSorting = "relevance";
         wallpaperChangeMode = "random";
+      };
+    };
+
+    colors = {
+      mError = "#ff5555";
+      mHover = "#8be9fd";
+      mOnError = "#282a36";
+      mOnHover = "#003543";
+      mOnPrimary = "#282a36";
+      mOnSecondary = "#4e1d32";
+      mOnSurface = "#f8f8f2";
+      mOnSurfaceVariant = "#d6d8e0";
+      mOnTertiary = "#003543";
+      mOutline = "#5a5e77";
+      mPrimary = "#bd93f9";
+      mSecondary = "#ff79c6";
+      mShadow = "#282a36";
+      mSurface = "#282a36";
+      mSurfaceVariant = "#44475a";
+      mTertiary = "#8be9fd";
+    };
+
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        clipper = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        network-manager-vpn = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        screen-toolkit = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        timer = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        todo = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 2;
+    };
+
+    pluginSettings = {
+      screen-toolkit = {
+        colorHistory = [ ];
+        paletteColors = [ ];
+        installedLangs = [ "eng" ];
+        transAvailable = false;
+        selectedOcrLang = "eng";
+        screenshotPath = "";
+        videoPath = "";
+        filenameFormat = "";
+        detectedRecorder = "";
+        recordSkipConfirmation = false;
+        recordCopyToClipboard = false;
+        gifMaxSeconds = 30;
+      };
+      todo = {
+        todos = [ ];
+        pages = [ { id = 0; name = "General"; } ];
+        current_page_id = 0;
+        count = 0;
+        completedCount = 0;
+        showCompleted = false;
+        showBackground = false;
+        isExpanded = true;
+        useCustomColors = false;
+        priorityColors = {
+          high = "#ff5555";
+          medium = "#bd93f9";
+          low = "#d6d8e0";
+        };
+        exportPath = "~/Documents";
+        exportFormat = "markdown";
+        exportEmptySections = false;
       };
     };
   };

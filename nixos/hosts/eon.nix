@@ -65,4 +65,25 @@
 
   services.openssh.enable = true;
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = ''
+          ${pkgs.tuigreet}/bin/tuigreet \
+            --time \
+            --asterisks \
+            --remember \
+            --remember-user-session \
+            --cmd niri
+        '';
+        user = "greeter";
+      };
+    };
+  };
+  systemd.tmpfiles.rules = [
+    "d '/var/cache/tuigreet' - greeter greeter - -"
+  ];
+  security.pam.services.greetd.enableGnomeKeyring = true;
+
 }

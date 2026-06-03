@@ -1,4 +1,6 @@
 { config, pkgs, lib, ... }: {
+  home.packages = [ pkgs.figlet ];
+
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
