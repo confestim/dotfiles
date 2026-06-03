@@ -28,7 +28,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          # ./hosts/peon/hardware-configuration.nix
+          ./hardware-configuration.nix
           ./hosts/peon.nix
         ];
       };

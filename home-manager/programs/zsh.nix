@@ -54,6 +54,9 @@
       gp = "git push";
       gst = "git status";
       glog = "git log --oneline --graph --decorate";
+      nos = "sudo nixos-rebuild switch";
+      hms = "home-manager switch";
+
     };
 
     initContent = ''

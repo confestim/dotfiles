@@ -2,15 +2,17 @@
 {
   networking.hostName = "eon";
 
+  # boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = lib.mkForce false; # lanzaboote overrides this
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-
+  # docker
   virtualisation.docker.enable = true;
 
+  # smb`
   services.samba = {
     enable = true;
     settings.global.security = "user";
@@ -60,4 +62,7 @@
       "x-systemd.idle-timeout=60" "x-systemd.device-timeout=5s" "x-systemd.mount-timeout=5s"
     ];
   };
+
+  services.openssh.enable = true;
+
 }

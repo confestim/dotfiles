@@ -8,30 +8,11 @@
   pkgs,
   ...
 }:
-let
-  hostName = "eon";
-in
 {
-
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./hosts/${hostName}.nix
-  ];
   hardware.keyboard.qmk.enable = true;
 
   hardware.rtl-sdr.enable = true;
   hardware.graphics.enable = true;
-  # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.enable = lib.mkForce false; # lanzaboote overrides this
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
-  };
-  virtualisation.docker.enable = true;
-  networking.hostName = hostName;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -42,7 +23,7 @@ in
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
-
+  programs.zsh.enable = true;
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -58,10 +39,7 @@ in
     LC_TIME = "nl_NL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.startx.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
+ programs.nix-ld.libraries = with pkgs; [
     libsecret
     glib
   ];
@@ -183,13 +161,6 @@ in
 
   # Install firefox.
   programs.firefox.enable = true;
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      nos = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && sudo nixos-rebuild switch && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'NixOS: auto update' && git push)";
-      hms = "DOTFILES=~/buffer/dotfiles && git -C $DOTFILES pull && home-manager switch && (cd $DOTFILES && git add -A && git diff-index --quiet HEAD || git commit -m 'HM: auto update' && git push)";
-    };
-  };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
@@ -222,7 +193,6 @@ in
   ];
   programs.nix-ld.enable = true;
   services.tumbler.enable = true;
-  programs.waybar.enable = true;
   # This is the dumbest shit ever
   programs.niri.enable = true;
   programs.git = {
@@ -261,7 +231,6 @@ in
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
