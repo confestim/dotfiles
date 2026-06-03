@@ -48,21 +48,6 @@
   # services.devmon.enable = true;
   services.gvfs.enable = true;
 
-  # portals
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    config = {
-      common = {
-        default = [ "gtk" ];
-      };
-      niri = {
-        default = lib.mkForce [ "wlr" ];
-        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-      };
-    };
-  };
 
   # udev
   services.udev.packages = [
@@ -73,10 +58,6 @@
     pkgs.platformio-core
     pkgs.openocd
   ];
-  services.udev.extraRules = ''
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", GROUP="plugdev"
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000a", MODE="0666", GROUP="plugdev"
-'';
 
   # Enable greetd with tuigreet
   services.greetd = {
@@ -181,7 +162,6 @@
     python3
     niri
     xwayland-satellite
-    waybar
     gcc
     valgrind
     git
@@ -193,7 +173,6 @@
   ];
   programs.nix-ld.enable = true;
   services.tumbler.enable = true;
-  # This is the dumbest shit ever
   programs.niri.enable = true;
   programs.git = {
     enable = true;
@@ -236,6 +215,13 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+
+
+  # hall of shame
+  services.udev.extraRules = ''
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", GROUP="plugdev"
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000a", MODE="0666", GROUP="plugdev"
+'';
 
   system.stateVersion = "25.11"; # Did you read the comment?
 

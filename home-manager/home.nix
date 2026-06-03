@@ -10,27 +10,22 @@
     ./programs/swaylock.nix
     ./files.nix
   ];
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config.common.default = [
-      "wlr"
-      "gtk"
-    ];
-  };
-
   home.username = "boyan";
   home.homeDirectory = "/home/boyan";
   fonts.fontconfig.enable = true;
 
   home.stateVersion = "25.11";
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.catppuccin-cursors.mochaLavender;
+    name = "catppuccin-mocha-lavender-cursors";
+    size = 24;
+  };
+
   home.packages = with pkgs; [
     qt6.qtmultimedia
+    upower
     nerd-fonts.agave
     localsend
     chromium
@@ -55,7 +50,6 @@
     fastfetch
     thunderbird
     gcr
-    nwg-bar
     kicad
     # Programming
     ghc
@@ -63,9 +57,7 @@
     gnumake
     uv
     fira-code
-    fuzzel
     swaylock-effects
-    swaybg
     brightnessctl
     wireplumber
     nodejs
@@ -81,25 +73,6 @@
   services.gnome-keyring = {
     enable = true;
     components = [ "pkcs11" "secrets" "ssh" ];
-  };
-
-  # Notification daemon
-  services.mako = {
-    enable = true;
-    settings = {
-      background-color = "#282a36";
-      text-color = "#f8f8f2";
-      border-color = "#bd93f9";
-      border-radius = 8;
-      border-size = 2;
-      default-timeout = 5000;
-      layer = "overlay";
-      font = "Agave Nerd Font 11";
-    };
-    extraConfig = ''
-      [urgency=high]
-      border-color=#ff5555
-    '';
   };
 
   gtk = {

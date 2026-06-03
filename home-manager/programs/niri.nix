@@ -52,7 +52,7 @@
     }
 
     cursor {
-        xcursor-theme "Dracula-cursors"
+        xcursor-theme "catppuccin-mocha-lavender-cursors"
         xcursor-size 24
     }
 
@@ -93,21 +93,18 @@
         }
     }
 
-    spawn-at-startup "swaybg" "-i" "/home/boyan/Pics/Wallpapers/comment.png" "-m" "fill"
-
     spawn-at-startup "noctalia-shell"
-    spawn-at-startup "udiskie" "--tray"
 
     screenshot-path null
 
     animations {
         slowdown 1.0
-        
+
         window-open {
             duration-ms 50
             curve "ease-out-expo"
         }
-        
+
         window-close {
             duration-ms 50
             curve "ease-out-quad"
@@ -313,5 +310,6 @@
 
     spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE"
     spawn-at-startup "bash" "-c" "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE && systemctl --user start graphical-session.target"
-  '';
+    spawn-at-startup "systemctl" "--user" "import-environment" "PATH" "XDG_DATA_DIRS"
+    '';
 }
