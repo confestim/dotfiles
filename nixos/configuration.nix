@@ -50,7 +50,7 @@
 
 
   # udev
-  services.udev.packages = [
+  services.udev.packages = [ 
     pkgs.stlink
     pkgs.libmtp.out
     pkgs.qmk-udev-rules

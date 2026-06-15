@@ -29,13 +29,7 @@
 
       # Utilities
       vim-surround
-      vim-commentary
-      vim-multiple-cursors
       neoformat
-      nvim-jqx
-
-      # Copilot
-      copilot-vim
 
       # CoC (Completion)
       coc-nvim
@@ -109,7 +103,7 @@
       " ========== CLIPBOARD FIX ==========
       " Use system clipboard for all operations
       set clipboard=unnamedplus
-      
+
       " Make sure we can use system clipboard
       if has('unnamedplus')
         set clipboard=unnamedplus
@@ -119,7 +113,7 @@
 
       " Tab navigation
       nnoremap <Tab> >>
-      nnoremap <S-Tab> 
+      nnoremap <S-Tab>
 
       " Airline
       let g:airline_powerline_fonts = 1
