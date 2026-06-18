@@ -61,11 +61,18 @@
     };
 
     initContent = ''
+      # Emacs keybindings (fuck vi mode)
+      bindkey -e
+
       # fzf integration
       if [ -n "''${commands[fzf-share]}" ]; then
         source "$(fzf-share)/key-bindings.zsh"
         source "$(fzf-share)/completion.zsh"
       fi
+
+      # Ctrl+arrow keys for word movement
+      bindkey '^[[1;5C' forward-word
+      bindkey '^[[1;5D' backward-word
 
       # sudo plugin: Esc-Esc to prepend sudo
       sudo-command-line() {
