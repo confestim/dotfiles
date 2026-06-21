@@ -101,7 +101,7 @@
         slowdown 1.0
 
         window-open {
-            duration-ms 260
+            duration-ms 120
             curve "linear"
 
             custom-shader r"
@@ -181,7 +181,7 @@ vec4 open_color(vec3 coords_geo, vec3 size_geo) {
         }
 
         window-close {
-            duration-ms 180
+            duration-ms 100
             curve "linear"
 
             custom-shader r"
@@ -266,7 +266,7 @@ vec4 close_color(vec3 coords_geo, vec3 size_geo) {
         }
 
         window-resize {
-            duration-ms 160
+            duration-ms 80
             curve "linear"
 
             custom-shader r"
