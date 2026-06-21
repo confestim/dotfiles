@@ -17,7 +17,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          ./hardware-configuration.nix
+          ./hardware-configuration-eon.nix
           ./hosts/eon.nix
           grub2-themes.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
@@ -28,7 +28,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          ./hardware-configuration.nix
+          ./hardware-configuration-peon.nix
           ./hosts/peon.nix
         ];
       };

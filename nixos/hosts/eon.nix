@@ -28,6 +28,7 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # CIFS/SMB network mounts
   fileSystems."/mnt/AtmoSphere" = {
