@@ -101,13 +101,251 @@
         slowdown 1.0
 
         window-open {
-            duration-ms 50
-            curve "ease-out-expo"
+            duration-ms 260
+            curve "linear"
+
+            custom-shader r"
+float easeInExpo(float t) {
+    return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
+}
+
+float easeOutExpo(float t) {
+    return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
+}
+
+float easeOutQuad(float t) {
+    return 1.0 - (1.0 - t) * (1.0 - t);
+}
+
+float easeInQuad(float t) {
+    return t * t;
+}
+
+float easeOutCubic(float t) {
+    float f = t - 1.0;
+    return f * f * f + 1.0;
+}
+
+float easeInCubic(float t) {
+    return t * t * t;
+}
+
+float centerGradient(float x) {
+    x = x * 2.0;
+    return x < 1.0 ? x : 2.0 - x;
+}
+
+vec2 scaleUV(vec2 uv, vec2 scale) {
+    return (uv - 0.5) / scale + 0.5;
+}
+
+vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+    vec2 uv = (niri_geo_to_tex * coords_geo).xy;
+
+    if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+        return vec4(0.0);
+    }
+
+    float t = easeOutQuad(niri_clamped_progress);
+
+    float x = mix(0.1, 1.0, easeOutCubic(niri_clamped_progress));
+    float y = easeInQuad(niri_clamped_progress);
+
+    vec2 suv = scaleUV(uv, vec2(x, y));
+
+    if (suv.x < 0.0 || suv.x > 1.0 || suv.y < 0.0 || suv.y > 1.0) {
+        return vec4(0.0);
+    }
+
+    float tb = centerGradient(suv.y);
+    float lr = centerGradient(suv.x);
+
+    float tbMask = smoothstep(0.0, 0.10, tb);
+    float lrMask = smoothstep(0.0, 0.10, lr);
+
+    float mask = tbMask * lrMask;
+
+    vec3 tint = vec3(0.55, 0.82, 1.0);
+    vec3 color = mix(tint, vec3(1.0), t);
+
+    float tintAmt = smoothstep(0.0, 0.8, t);
+
+    vec3 rgb = mix(tint, color, tintAmt);
+    float alpha = mask * t;
+
+    vec4 wColor = texture2D(niri_tex, suv);
+
+    return mix(vec4(rgb, alpha * wColor.a), wColor, easeInExpo(niri_clamped_progress));
+}
+            "
         }
 
         window-close {
-            duration-ms 50
-            curve "ease-out-quad"
+            duration-ms 180
+            curve "linear"
+
+            custom-shader r"
+float easeInExpo(float t) {
+    return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
+}
+
+float easeOutExpo(float t) {
+    return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
+}
+
+float easeOutQuad(float t) {
+    return 1.0 - (1.0 - t) * (1.0 - t);
+}
+
+float easeInQuad(float t) {
+    return t * t;
+}
+
+float easeOutCubic(float t) {
+    float f = t - 1.0;
+    return f * f * f + 1.0;
+}
+
+float easeInCubic(float t) {
+    return t * t * t;
+}
+
+float centerGradient(float x) {
+    x = x * 2.0;
+    return x < 1.0 ? x : 2.0 - x;
+}
+
+vec2 scaleUV(vec2 uv, vec2 scale) {
+    return (uv - 0.5) / scale + 0.5;
+}
+
+vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+    if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+        coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+        return vec4(0.0);
+    }
+
+    vec2 uv = (niri_geo_to_tex * coords_geo).xy;
+
+    if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+        return vec4(0.0);
+    }
+
+    float t = easeOutQuad(1.0 - niri_clamped_progress);
+
+    float x = mix(0.1, 1.0, easeOutCubic(1.0 - niri_clamped_progress));
+    float y = easeInQuad(1.0 - niri_clamped_progress);
+
+    vec2 suv = scaleUV(uv, vec2(x, y));
+
+    if (suv.x < 0.0 || suv.x > 1.0 || suv.y < 0.0 || suv.y > 1.0) {
+        return vec4(0.0);
+    }
+
+    float tb = centerGradient(suv.y);
+    float lr = centerGradient(suv.x);
+
+    float tbMask = smoothstep(0.0, 0.10, tb);
+    float lrMask = smoothstep(0.0, 0.10, lr);
+
+    float mask = tbMask * lrMask;
+
+    vec3 tint = vec3(0.55, 0.82, 1.0);
+    vec3 color = mix(tint, vec3(1.0), t);
+
+    float tintAmt = smoothstep(0.0, 0.8, t);
+
+    vec3 rgb = mix(tint, color, tintAmt);
+    float alpha = mask * t;
+
+    vec4 wColor = texture2D(niri_tex, suv);
+
+    return mix(vec4(rgb, alpha * wColor.a), wColor, easeInExpo(1.0 - niri_clamped_progress));
+}
+            "
+        }
+
+        window-resize {
+            duration-ms 160
+            curve "linear"
+
+            custom-shader r"
+const float PI = 3.141592653589793;
+
+float hash21(vec2 p) {
+    p = fract(p * vec2(127.1, 311.7));
+    p += dot(p, p + 34.345);
+    return fract(p.x * p.y);
+}
+
+float noise2(vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+
+    float a = hash21(i);
+    float b = hash21(i + vec2(1.0, 0.0));
+    float c = hash21(i + vec2(0.0, 1.0));
+    float d = hash21(i + vec2(1.0, 1.0));
+
+    vec2 u = f * f * (3.0 - 2.0 * f);
+
+    return mix(a, b, u.x)
+        + (c - a) * u.y * (1.0 - u.x)
+        + (d - b) * u.x * u.y;
+}
+
+vec3 randomRGB(vec2 uv, float t) {
+    float r = noise2(uv * 1.3 + vec2(13.0, 71.0) + t * 120.0);
+    float g = noise2(uv * 1.7 + vec2(37.0, 19.0) + t * 90.0);
+    float b = noise2(uv * 1.1 + vec2(91.0, 53.0) + t * 140.0);
+    return vec3(r, g, b);
+}
+
+vec4 resize_color(vec3 coords_geo, vec3 size_geo) {
+    if (coords_geo.x < 0.0 || coords_geo.x > 1.0 ||
+        coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+        return vec4(0.0);
+    }
+
+    vec2 uv = coords_geo.xy;
+    float t = niri_clamped_progress;
+
+    float pulse = sin(t * PI);
+
+    vec2 base = uv * size_geo.xy;
+
+    vec3 coarse = randomRGB(floor(base * 0.12), t);
+    vec3 mid    = randomRGB(base * 0.35, t);
+    vec3 fine   = randomRGB(base * 0.9,  t);
+
+    vec3 snow = mix(coarse, mid, 0.5);
+    snow = mix(snow, fine, 0.35);
+
+    snow -= 0.5;
+
+    float streak = sin(uv.y * size_geo.y * 0.6 + t * 80.0) * 0.15;
+    snow += vec3(streak);
+
+    vec3 tint = vec3(
+        sin(t * 37.0) * 0.2,
+        sin(t * 53.0) * 0.2,
+        sin(t * 29.0) * 0.2
+    );
+
+    snow += tint;
+
+    float strength = 0.55;
+    vec4 color = vec4(snow, 1.0) * strength * pulse;
+    color.a = 1.0;
+
+    float alpha = length(color) * 1.2;
+
+    vec3 coords_tex_next = niri_geo_to_tex_next * coords_geo;
+    vec4 wColor = texture2D(niri_tex_next, coords_tex_next.st);
+
+    return mix(wColor, color, pulse * 0.5);
+}
+            "
         }
     }
     window-rule {

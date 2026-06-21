@@ -1,7 +1,15 @@
 { config, lib, pkgs, ... }:
 {
   networking.hostName = "eon";
-  networking.interfaces.enp42s0.wakeOnLan.enable = true;
+  networking.interfaces.enp42s0 = {
+    wakeOnLan.enable = true;
+    ipv4.addresses = [{
+      address = "192.168.178.212";
+      prefixLength = 24;
+    }];
+  };
+  networking.defaultGateway = "192.168.178.1";
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   networking.firewall.allowedUDPPorts = [ 9 ];
 
   boot.loader.efi.canTouchEfiVariables = true;

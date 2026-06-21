@@ -11,6 +11,8 @@
         mode = "dark";
         source = "builtin";
         builtin = "Dracula";
+        community_palette = "Peche";
+        wallpaper_scheme = "m3-tonal-spot";
         templates = {
           builtin_ids = [ "niri" ];
           community_ids = [ "fuzzel" "discord" ];
@@ -20,7 +22,7 @@
       shell = {
         telemetry_enabled = false;
         avatar_path = "/home/boyan/.face";
-        corner_radius_scale = 0.0;
+        corner_radius_scale = 0.15;
         niri_overview_type_to_launch_enabled = true;
         password_style = "random";
         screen_time_enabled = true;
@@ -79,9 +81,9 @@
           position = "top";
           thickness = 37;
           background_opacity = 1.0;
-          radius = 0;
-          margin_edge = 4;
-          margin_ends = 15;
+          radius = 11;
+          margin_edge = 0;
+          margin_ends = 0;
           margin_opposite_edge = 3;
           widget_spacing = 18;
           padding = 33;
@@ -231,19 +233,20 @@
         fill_color = "#282a36";
         transition = [ "fade" "wipe" "disc" "stripes" "zoom" "honeycomb" ];
         transition_duration = 1500;
+        transition_on_startup = true;
         edge_smoothness = 0.3;
         default = {
-          path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+          path = "/home/boyan/Pictures/Wallpapers/Waves 1.png";
         };
         last = {
-          path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+          path = "/home/boyan/Pictures/Wallpapers/Waves 1.png";
         };
         monitors = {
           DP-1 = {
-            path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+            path = "/home/boyan/Pictures/Wallpapers/Waves 1.png";
           };
           HDMI-A-1 = {
-            path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+            path = "/home/boyan/Pictures/Wallpapers/Waves 1.png";
           };
         };
       };
@@ -274,8 +277,8 @@
           "desktop-widget-0000000000000001" = {
             box_height = 208.0;
             box_width = 336.0;
-            cx = 968.0;
-            cy = 820.0;
+            cx = 1272.0;
+            cy = 492.0;
             output = "HDMI-A-1";
             rotation = 0.0;
             type = "weather";
@@ -300,10 +303,10 @@
             };
           };
           "desktop-widget-0000000000000003" = {
-            box_height = 368.0;
-            box_width = 608.0;
-            cx = 960.0;
-            cy = 540.0;
+            box_height = 272.0;
+            box_width = 416.0;
+            cx = 656.0;
+            cy = 468.0;
             output = "HDMI-A-1";
             rotation = 0.0;
             type = "clock";
@@ -381,6 +384,24 @@
 
       idle = {
         enabled = false;
+        behavior_order = [ "lock" "screen-off" "lock-and-suspend" ];
+        behavior = {
+          lock = {
+            action = "lock";
+            enabled = false;
+            timeout = 600;
+          };
+          "lock-and-suspend" = {
+            action = "lock_and_suspend";
+            enabled = false;
+            timeout = 900;
+          };
+          "screen-off" = {
+            action = "screen_off";
+            enabled = true;
+            timeout = 660;
+          };
+        };
       };
 
       hooks = {

@@ -20,6 +20,7 @@
       sync_to_monitor = true;
 
       # Window layout
+      hide_window_decorations = true;
       remember_window_size = true;
       initial_window_width = 640;
       initial_window_height = 400;
