@@ -20,7 +20,6 @@
       "davidanson.vscode-markdownlint"
       "alefragnani.bookmarks"
       "WakaTime.vscode-wakatime"
-      "github.copilot"
       "wallenwang.ccls-plus"
       "vibhanshugarg.vibhanshugarg-codenotes"
       "myriad-dreamin.tinymist"
@@ -182,19 +181,6 @@
 
       # Security
       "security.workspace.trust.untrustedFiles" = "open";
-
-      # GitHub Copilot
-      "github.copilot.enable" = {
-
-        "*" = true;
-        "plaintext" = false;
-        "markdown" = true;
-        "c" = true;
-        "python" = true;
-        "java" = true;
-      };
-      "github.copilot.chat.codesearch.enabled" = true;
-      "github.copilot.nextEditSuggestions.enabled" = true;
 
     };
     profiles.default.keybindings = [
