@@ -39,6 +39,15 @@
   home.packages = with pkgs; [
     qt6.qtmultimedia
     upower
+    grim
+    slurp
+    tesseract
+    imagemagick
+    zbar
+    wl-screenrec
+    wf-recorder
+    hyprpicker
+    jq
     nerd-fonts.agave
     steam-run
     localsend

@@ -4,20 +4,18 @@
   networking.interfaces.eth0.wakeOnLan.enable = true;
   networking.firewall.allowedUDPPorts = [ 9 ];
 
-  # boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = lib.mkForce false; # lanzaboote overrides this
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  # docker
+
   virtualisation.docker.enable = true;
 
-  # smb`
   services.samba = {
     enable = true;
-    settings.global.security = "user";
+    securityType = "user";
   };
 
   # Load nvidia driver for Xorg and Wayland
