@@ -15,8 +15,10 @@ let
   });
 in
 {
+  hardware.bluetooth.enable = true;
   networking.hostName = "peon";
   boot.loader.systemd-boot.enable = true;
+  virtualisation.docker.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 0;
   services.upower.enable = true;
@@ -52,7 +54,9 @@ in
       RestartSec = "10";
     };
   };
-
+  environment.systemPackages = with pkgs; [
+    blueman`
+  ];
   # PAM stack so autologin can open a proper user session
   # (sets XDG_RUNTIME_DIR, registers with logind, etc.)
   security.pam.services.autologin = {

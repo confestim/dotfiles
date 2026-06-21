@@ -27,6 +27,7 @@
     qt6.qtmultimedia
     upower
     nerd-fonts.agave
+    steam-run
     localsend
     chromium
     unzip
