@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./programs/zed.nix
+    ./programs/vscodium.nix
     ./programs/nvim.nix
     ./programs/kitty.nix
     ./programs/niri.nix
@@ -10,6 +10,19 @@
     ./programs/swaylock.nix
     ./files.nix
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = [
+      "wlr"
+      "gtk"
+    ];
+  };
+
   home.username = "boyan";
   home.homeDirectory = "/home/boyan";
   fonts.fontconfig.enable = true;

@@ -14,7 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+        noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -24,6 +28,7 @@
     {
       nixpkgs,
       home-manager,
+      nix4vscode,
       ...
     } @ inputs:
     let
@@ -31,6 +36,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ nix4vscode.overlays.default ];
       };
     in
     {
