@@ -4,7 +4,7 @@
     inputs.noctalia.homeModules.default
   ];
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
     settings = {
       appLauncher = {
@@ -611,93 +611,92 @@
         wallhavenSorting = "relevance";
         wallpaperChangeMode = "random";
       };
-    };
+      colors = {
+        mError = "#ff5555";
+        mHover = "#8be9fd";
+        mOnError = "#282a36";
+        mOnHover = "#003543";
+        mOnPrimary = "#282a36";
+        mOnSecondary = "#4e1d32";
+        mOnSurface = "#f8f8f2";
+        mOnSurfaceVariant = "#d6d8e0";
+        mOnTertiary = "#003543";
+        mOutline = "#5a5e77";
+        mPrimary = "#bd93f9";
+        mSecondary = "#ff79c6";
+        mShadow = "#282a36";
+        mSurface = "#282a36";
+        mSurfaceVariant = "#44475a";
+        mTertiary = "#8be9fd";
+      };
 
-    colors = {
-      mError = "#ff5555";
-      mHover = "#8be9fd";
-      mOnError = "#282a36";
-      mOnHover = "#003543";
-      mOnPrimary = "#282a36";
-      mOnSecondary = "#4e1d32";
-      mOnSurface = "#f8f8f2";
-      mOnSurfaceVariant = "#d6d8e0";
-      mOnTertiary = "#003543";
-      mOutline = "#5a5e77";
-      mPrimary = "#bd93f9";
-      mSecondary = "#ff79c6";
-      mShadow = "#282a36";
-      mSurface = "#282a36";
-      mSurfaceVariant = "#44475a";
-      mTertiary = "#8be9fd";
-    };
+      plugins = {
+        sources = [
+          {
+            enabled = true;
+            name = "Noctalia Plugins";
+            url = "https://github.com/noctalia-dev/noctalia-plugins";
+          }
+        ];
+        states = {
+          clipper = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          network-manager-vpn = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          screen-toolkit = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          timer = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          todo = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+        };
+        version = 2;
+      };
 
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        clipper = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        network-manager-vpn = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
+      pluginSettings = {
         screen-toolkit = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        timer = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          colorHistory = [ ];
+          paletteColors = [ ];
+          installedLangs = [ "eng" ];
+          transAvailable = false;
+          selectedOcrLang = "eng";
+          screenshotPath = "";
+          videoPath = "";
+          filenameFormat = "";
+          detectedRecorder = "";
+          recordSkipConfirmation = false;
+          recordCopyToClipboard = false;
+          gifMaxSeconds = 30;
         };
         todo = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          todos = [ ];
+          pages = [ { id = 0; name = "General"; } ];
+          current_page_id = 0;
+          count = 0;
+          completedCount = 0;
+          showCompleted = false;
+          showBackground = false;
+          isExpanded = true;
+          useCustomColors = false;
+          priorityColors = {
+            high = "#ff5555";
+            medium = "#bd93f9";
+            low = "#d6d8e0";
+          };
+          exportPath = "~/Documents";
+          exportFormat = "markdown";
+          exportEmptySections = false;
         };
-      };
-      version = 2;
-    };
-
-    pluginSettings = {
-      screen-toolkit = {
-        colorHistory = [ ];
-        paletteColors = [ ];
-        installedLangs = [ "eng" ];
-        transAvailable = false;
-        selectedOcrLang = "eng";
-        screenshotPath = "";
-        videoPath = "";
-        filenameFormat = "";
-        detectedRecorder = "";
-        recordSkipConfirmation = false;
-        recordCopyToClipboard = false;
-        gifMaxSeconds = 30;
-      };
-      todo = {
-        todos = [ ];
-        pages = [ { id = 0; name = "General"; } ];
-        current_page_id = 0;
-        count = 0;
-        completedCount = 0;
-        showCompleted = false;
-        showBackground = false;
-        isExpanded = true;
-        useCustomColors = false;
-        priorityColors = {
-          high = "#ff5555";
-          medium = "#bd93f9";
-          low = "#d6d8e0";
-        };
-        exportPath = "~/Documents";
-        exportFormat = "markdown";
-        exportEmptySections = false;
       };
     };
   };

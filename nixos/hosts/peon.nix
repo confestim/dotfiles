@@ -55,7 +55,7 @@ in
     };
   };
   environment.systemPackages = with pkgs; [
-    blueman`
+    blueman
   ];
   # PAM stack so autologin can open a proper user session
   # (sets XDG_RUNTIME_DIR, registers with logind, etc.)
