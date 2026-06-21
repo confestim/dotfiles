@@ -11,11 +11,20 @@
         mode = "dark";
         source = "builtin";
         builtin = "Dracula";
+        templates = {
+          builtin_ids = [ "niri" ];
+          community_ids = [ "fuzzel" "discord" ];
+        };
       };
 
       shell = {
         telemetry_enabled = false;
         avatar_path = "/home/boyan/.face";
+        corner_radius_scale = 0.0;
+        niri_overview_type_to_launch_enabled = true;
+        password_style = "random";
+        screen_time_enabled = true;
+        settings_show_advanced = true;
 
         animation = {
           enabled = true;
@@ -28,8 +37,9 @@
         };
 
         panel = {
-          launcher_placement = "centered";
+          launcher_placement = "attached";
           launcher_categories = true;
+          launcher_compact = true;
           launcher_show_icons = true;
           launcher_sort_by_usage = true;
           launcher_session_search = true;
@@ -62,17 +72,23 @@
         order = [ "main" ];
         main = {
           position = "top";
-          thickness = 34;
+          thickness = 37;
           background_opacity = 1.0;
-          radius = 12;
-          margin_edge = 4;
-          widget_spacing = 9;
-          padding = 12;
-          border = "outline";
-          border_width = 0;
+          radius = 0;
+          margin_edge = 8;
+          margin_ends = 190;
+          margin_opposite_edge = 8;
+          widget_spacing = 18;
+          padding = 33;
+          border = "secondary";
+          border_width = 0.5;
+          shadow = false;
+          font_family = "Noto Sans Symbols";
+          font_weight = 400;
 
           start = [
             "sysmon-cpu"
+            "ram"
             "active_window"
             "battery"
           ];
@@ -81,18 +97,20 @@
             "workspaces"
           ];
           end = [
+            "recorder"
             "tray"
-            "notifications"
             "volume"
-            "control-center"
             "session"
+            "keyboard_layout"
+            "control-center"
           ];
         };
       };
 
       widget = {
         clock = {
-          format = "{:%H:%M}\n{:%a, %b %d}";
+          format = "{:%H:%M}";
+          scale = 1.1;
           tooltip_format = "{:%H:%M, %A %B %d}";
         };
         workspaces = {
@@ -105,6 +123,10 @@
         sysmon-cpu = {
           type = "sysmon";
           stat = "cpu_usage";
+        };
+        ram = {
+          type = "sysmon";
+          stat = "ram_usage";
         };
         active_window = {
           display = "icon_and_text";
@@ -127,15 +149,28 @@
           scroll_step = 5;
         };
         control-center = {
-          glyph = "noctalia";
+          glyph = "settings";
         };
         session = {
           glyph = "shutdown";
+        };
+        recorder = {
+          type = "noctalia/screen_recorder:recorder";
+        };
+        cat = {
+          type = "noctalia/bongocat:cat";
         };
       };
 
       dock = {
         enabled = false;
+        auto_hide = true;
+        background_opacity = 1.0;
+        radius = 0;
+        reserve_space = false;
+        shadow = false;
+        show_dots = true;
+        show_instance_count = false;
       };
 
       notification = {
@@ -175,6 +210,7 @@
 
       location = {
         name = "Groningen";
+        address = "Groningen";
         auto_locate = false;
         weather_enabled = true;
         weather_show_effects = true;
@@ -187,10 +223,143 @@
         enabled = true;
         directory = "/home/boyan/Pictures/Wallpapers";
         fill_mode = "crop";
-        fill_color = "#111111";
+        fill_color = "#282a36";
         transition = [ "fade" "wipe" "disc" "stripes" "zoom" "honeycomb" ];
         transition_duration = 1500;
         edge_smoothness = 0.3;
+        default = {
+          path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+        };
+        last = {
+          path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+        };
+        monitors = {
+          DP-1 = {
+            path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+          };
+          HDMI-A-1 = {
+            path = "/home/boyan/Pictures/Wallpapers/Ship.png";
+          };
+        };
+      };
+
+      plugins = {
+        enabled = [ "noctalia/bongocat" "noctalia/screen_recorder" ];
+      };
+
+      plugin_settings = {
+        "noctalia/screen_recorder" = {
+          video_source = "region";
+        };
+      };
+
+      desktop_widgets = {
+        schema_version = 2;
+        widget_order = [
+          "desktop-widget-0000000000000001"
+          "desktop-widget-0000000000000002"
+          "desktop-widget-0000000000000003"
+        ];
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = true;
+        };
+        widget = {
+          "desktop-widget-0000000000000001" = {
+            box_height = 208.0;
+            box_width = 336.0;
+            cx = 968.0;
+            cy = 820.0;
+            output = "HDMI-A-1";
+            rotation = 0.0;
+            type = "weather";
+            settings = {
+              background = false;
+              shadow = false;
+              show_forecast = true;
+            };
+          };
+          "desktop-widget-0000000000000002" = {
+            box_height = 128.0;
+            box_width = 1776.0;
+            cx = 984.0;
+            cy = 972.0;
+            output = "HDMI-A-1";
+            rotation = 0.0;
+            type = "audio_visualizer";
+            settings = {
+              background = false;
+              bands = 32;
+              show_when_idle = true;
+            };
+          };
+          "desktop-widget-0000000000000003" = {
+            box_height = 368.0;
+            box_width = 608.0;
+            cx = 960.0;
+            cy = 540.0;
+            output = "HDMI-A-1";
+            rotation = 0.0;
+            type = "clock";
+            settings = {
+              background = false;
+              circle = true;
+              clock_style = "analog";
+              color = "secondary";
+            };
+          };
+        };
+      };
+
+      lockscreen_widgets = {
+        enabled = false;
+        schema_version = 2;
+        widget_order = [
+          "lockscreen-login-box@DP-1"
+          "lockscreen-login-box@HDMI-A-1"
+        ];
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = true;
+        };
+        widget = {
+          "lockscreen-login-box@DP-1" = {
+            box_height = 70.0;
+            box_width = 400.0;
+            cx = 960.0;
+            cy = 961.0;
+            output = "DP-1";
+            rotation = 0.0;
+            type = "login_box";
+            settings = {
+              background_color = "surface_variant";
+              background_opacity = 0.88;
+              background_radius = 12.0;
+              input_opacity = 1.0;
+              input_radius = 6.0;
+              show_login_button = true;
+            };
+          };
+          "lockscreen-login-box@HDMI-A-1" = {
+            box_height = 70.0;
+            box_width = 400.0;
+            cx = 960.0;
+            cy = 961.0;
+            output = "HDMI-A-1";
+            rotation = 0.0;
+            type = "login_box";
+            settings = {
+              background_color = "surface_variant";
+              background_opacity = 0.88;
+              background_radius = 12.0;
+              input_opacity = 1.0;
+              input_radius = 6.0;
+              show_login_button = true;
+            };
+          };
+        };
       };
 
       system = {
