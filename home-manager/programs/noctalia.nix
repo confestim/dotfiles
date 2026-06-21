@@ -48,6 +48,11 @@
           session_placement = "attached";
         };
 
+        screen_corners = {
+          enabled = true;
+          size = 16;
+        };
+
         session = {
           actions = [
             { action = "lock"; shortcut = "1"; }
@@ -75,13 +80,13 @@
           thickness = 37;
           background_opacity = 1.0;
           radius = 0;
-          margin_edge = 8;
-          margin_ends = 190;
-          margin_opposite_edge = 8;
+          margin_edge = 4;
+          margin_ends = 15;
+          margin_opposite_edge = 3;
           widget_spacing = 18;
           padding = 33;
-          border = "secondary";
-          border_width = 0.5;
+          border = "primary";
+          border_width = 0;
           shadow = false;
           font_family = "Noto Sans Symbols";
           font_weight = 400;
