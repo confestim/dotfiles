@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 {
   networking.hostName = "eon";
+  networking.interfaces.eth0.wakeOnLan.enable = true;
+  networking.firewall.allowedUDPPorts = [ 9 ];
 
   # boot
   boot.loader.efi.canTouchEfiVariables = true;
