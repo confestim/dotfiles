@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ./programs/vscodium.nix
@@ -40,6 +40,7 @@
     qt6.qtmultimedia
     upower
     nerd-fonts.agave
+    steam-run
     localsend
     chromium
     unzip
@@ -98,6 +99,7 @@
       name = "Dracula";
       package = pkgs.dracula-icon-theme;
     };
+    gtk4.theme = config.gtk.theme;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
@@ -114,7 +116,7 @@
   };
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "gtk3";
     style.name = "adwaita-dark";
   };
 

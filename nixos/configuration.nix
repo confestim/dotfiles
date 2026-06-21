@@ -48,6 +48,17 @@
   # services.devmon.enable = true;
   services.gvfs.enable = true;
 
+  programs.appimage = {
+  enable = true;
+  binfmt = true;  # lets you run AppImages directly without appimage-run
+  package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [
+      pkgs.glfw
+      pkgs.libGL
+      pkgs.gcc-unwrapped.lib
+    ];
+  };
+};
 
   # udev
   services.udev.packages = [ 
