@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   networking.hostName = "eon";
-  networking.interfaces.eth0.wakeOnLan.enable = true;
+  networking.interfaces.enp42s0.wakeOnLan.enable = true;
   networking.firewall.allowedUDPPorts = [ 9 ];
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -15,7 +15,7 @@
 
   services.samba = {
     enable = true;
-    securityType = "user";
+    settings.global.security = "user";
   };
 
   # Load nvidia driver for Xorg and Wayland

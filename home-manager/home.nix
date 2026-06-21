@@ -37,6 +37,7 @@
   };
 
   home.packages = with pkgs; [
+    opencode # i have swallowed the pill
     qt6.qtmultimedia
     upower
     grim

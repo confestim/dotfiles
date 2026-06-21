@@ -145,8 +145,8 @@
 
         Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
         Mod+Shift+Return { spawn "kitten quick-access-terminal";}
-        Mod+Space hotkey-overlay-title="Open Launcher: noctalia" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-        Mod+A hotkey-overlay-title="Open Launcher: noctalia" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+        Mod+Space hotkey-overlay-title="Open Launcher: noctalia" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+        Mod+A hotkey-overlay-title="Open Launcher: noctalia" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
         Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
         Mod+F hotkey-overlay-title="Open a Firefox" { spawn "firefox"; }
         Mod+M hotkey-overlay-title="Open a Thunderbird" { spawn "thunderbird"; }
@@ -154,7 +154,7 @@
         Mod+E hotkey-overlay-title="Open a Code Editor: codium" { spawn "env" "ELECTRON_OZONE_PLATFORM_HINT=wayland" "codium"; }
         Mod+Shift+E hotkey-overlay-title="Open a Sublime Text: subl" { spawn "subl"; }
         Mod+Shift+F hotkey-overlay-title="Open a File Manager: nautilus" { spawn "nautilus"; }
-        Mod+Shift+S hotkey-overlay-title="Session Menu: noctalia" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+        Mod+Shift+S hotkey-overlay-title="Session Menu: noctalia" { spawn "noctalia" "msg" "panel-toggle" "session"; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
