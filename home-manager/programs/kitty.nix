@@ -33,8 +33,10 @@
       tab_bar_style = "fade";
 
       # Cursor
-      cursor_shape = "block";
-      cursor_blink_interval = -1;
+      cursor_shape = "beam";
+      cursor_blink_interval = 0.5;
+      cursor_stop_blinking_after = 5.0;
+      cursor_trail = 2;
 
       # Scrollback
       scrollback_lines = 2000;

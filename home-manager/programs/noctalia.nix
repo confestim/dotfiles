@@ -81,9 +81,9 @@
           position = "top";
           thickness = 37;
           background_opacity = 1.0;
-          radius = 11;
-          margin_edge = 0;
-          margin_ends = 0;
+          radius = 12;
+          margin_edge = 8;
+          margin_ends = 8;
           margin_opposite_edge = 3;
           widget_spacing = 18;
           padding = 33;
